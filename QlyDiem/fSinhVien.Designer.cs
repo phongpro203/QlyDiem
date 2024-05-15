@@ -32,6 +32,7 @@
             this.dgvSV = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbNgaysinh = new System.Windows.Forms.DateTimePicker();
             this.btnRefresh = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Panel();
@@ -52,7 +53,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tbHoTen = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbNgaysinh = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbQueQuan = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.panel2.SuspendLayout();
             this.btnRefresh.SuspendLayout();
@@ -78,6 +79,7 @@
             // 
             // dgvSV
             // 
+            this.dgvSV.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSV.Location = new System.Drawing.Point(48, 421);
             this.dgvSV.Margin = new System.Windows.Forms.Padding(4);
@@ -100,6 +102,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.tbNgaysinh);
             this.panel2.Controls.Add(this.btnRefresh);
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
@@ -111,7 +114,6 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.tbHoTen);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.tbNgaysinh);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.tbQueQuan);
             this.panel2.Controls.Add(this.label5);
@@ -121,6 +123,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1146, 227);
             this.panel2.TabIndex = 16;
+            // 
+            // tbNgaysinh
+            // 
+            this.tbNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tbNgaysinh.Location = new System.Drawing.Point(107, 130);
+            this.tbNgaysinh.Name = "tbNgaysinh";
+            this.tbNgaysinh.Size = new System.Drawing.Size(110, 22);
+            this.tbNgaysinh.TabIndex = 32;
             // 
             // btnRefresh
             // 
@@ -134,6 +144,7 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(114, 45);
             this.btnRefresh.TabIndex = 31;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label20
             // 
@@ -146,6 +157,7 @@
             this.label20.Size = new System.Drawing.Size(86, 25);
             this.label20.TabIndex = 23;
             this.label20.Text = "Làm mới";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // btnXoa
             // 
@@ -160,6 +172,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(114, 45);
             this.btnXoa.TabIndex = 29;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // label19
             // 
@@ -171,6 +184,7 @@
             this.label19.Size = new System.Drawing.Size(48, 25);
             this.label19.TabIndex = 23;
             this.label19.Text = "Xóa";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // pictureBox3
             // 
@@ -182,6 +196,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(39, 36);
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // btnSua
             // 
@@ -196,6 +211,7 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(114, 45);
             this.btnSua.TabIndex = 28;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label18
             // 
@@ -207,6 +223,7 @@
             this.label18.Size = new System.Drawing.Size(48, 25);
             this.label18.TabIndex = 23;
             this.label18.Text = "Sửa";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // pictureBox2
             // 
@@ -218,6 +235,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(39, 36);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // btnThem
             // 
@@ -232,6 +250,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(114, 45);
             this.btnThem.TabIndex = 27;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label15
             // 
@@ -243,6 +262,7 @@
             this.label15.Size = new System.Drawing.Size(63, 25);
             this.label15.TabIndex = 23;
             this.label15.Text = "Thêm";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // pictureBox1
             // 
@@ -254,16 +274,18 @@
             this.pictureBox1.Size = new System.Drawing.Size(39, 36);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // cbbLop
             // 
             this.cbbLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbLop.FormattingEnabled = true;
-            this.cbbLop.Location = new System.Drawing.Point(520, 70);
+            this.cbbLop.Location = new System.Drawing.Point(557, 70);
             this.cbbLop.Margin = new System.Windows.Forms.Padding(4);
             this.cbbLop.Name = "cbbLop";
             this.cbbLop.Size = new System.Drawing.Size(208, 28);
             this.cbbLop.TabIndex = 26;
+            this.cbbLop.SelectedIndexChanged += new System.EventHandler(this.cbbLop_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -280,7 +302,7 @@
             // 
             this.panel3.Controls.Add(this.rdoNu);
             this.panel3.Controls.Add(this.rdoNam);
-            this.panel3.Location = new System.Drawing.Point(108, 160);
+            this.panel3.Location = new System.Drawing.Point(107, 162);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(256, 57);
@@ -335,7 +357,7 @@
             // tbHoTen
             // 
             this.tbHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHoTen.Location = new System.Drawing.Point(99, 75);
+            this.tbHoTen.Location = new System.Drawing.Point(107, 75);
             this.tbHoTen.Margin = new System.Windows.Forms.Padding(4);
             this.tbHoTen.Name = "tbHoTen";
             this.tbHoTen.Size = new System.Drawing.Size(264, 26);
@@ -352,35 +374,24 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "Ngày sinh:";
             // 
-            // tbNgaysinh
-            // 
-            this.tbNgaysinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNgaysinh.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbNgaysinh.Location = new System.Drawing.Point(120, 128);
-            this.tbNgaysinh.Margin = new System.Windows.Forms.Padding(4);
-            this.tbNgaysinh.Name = "tbNgaysinh";
-            this.tbNgaysinh.Size = new System.Drawing.Size(243, 26);
-            this.tbNgaysinh.TabIndex = 7;
-            this.tbNgaysinh.Text = "mm/dd/yyyy";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(421, 26);
+            this.label7.Location = new System.Drawing.Point(431, 25);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 20);
+            this.label7.Size = new System.Drawing.Size(90, 20);
             this.label7.TabIndex = 4;
-            this.label7.Text = " Quê Quán:";
+            this.label7.Text = "Quê Quán:";
             // 
             // tbQueQuan
             // 
             this.tbQueQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbQueQuan.Location = new System.Drawing.Point(520, 23);
+            this.tbQueQuan.Location = new System.Drawing.Point(557, 23);
             this.tbQueQuan.Margin = new System.Windows.Forms.Padding(4);
             this.tbQueQuan.Name = "tbQueQuan";
-            this.tbQueQuan.Size = new System.Drawing.Size(245, 26);
+            this.tbQueQuan.Size = new System.Drawing.Size(208, 26);
             this.tbQueQuan.TabIndex = 5;
             // 
             // label5
@@ -397,7 +408,7 @@
             // tbMaSV
             // 
             this.tbMaSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMaSV.Location = new System.Drawing.Point(99, 23);
+            this.tbMaSV.Location = new System.Drawing.Point(107, 22);
             this.tbMaSV.Margin = new System.Windows.Forms.Padding(4);
             this.tbMaSV.Name = "tbMaSV";
             this.tbMaSV.Size = new System.Drawing.Size(264, 26);
@@ -438,6 +449,7 @@
             this.btnTatCa.TabIndex = 6;
             this.btnTatCa.Text = "Tất Cả";
             this.btnTatCa.UseVisualStyleBackColor = false;
+            this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
             // 
             // btnTimKiem
             // 
@@ -452,6 +464,7 @@
             this.btnTimKiem.TabIndex = 5;
             this.btnTimKiem.Text = "Tìm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // tbTimKiemTheoMa
             // 
@@ -490,6 +503,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fSinhVien";
             this.Text = "fSinhVien";
+            this.Load += new System.EventHandler(this.fSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -538,7 +552,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbHoTen;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbNgaysinh;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbQueQuan;
         private System.Windows.Forms.Label label5;
@@ -549,5 +562,7 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox tbTimKiemTheoMa;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DateTimePicker tbNgaysinh;
     }
 }
