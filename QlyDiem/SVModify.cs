@@ -21,7 +21,8 @@ namespace QlyDiem
 
             connection = Connection.getSqlConnection();
             connection.Open();
-            string sql = "select *from SinhVien";
+            string sql = "select SinhVien.MaSV,SinhVien.TenSV,Lop.TenLop,SinhVien.NgaySinh,SinhVien.QueQuan,SinhVien.GioiTinh " +
+                         "from SinhVien,Lop where SinhVien.MaLop=Lop.MaLop";
             da = new SqlDataAdapter(sql, connection);
             da.Fill(dt);
             connection.Close();
