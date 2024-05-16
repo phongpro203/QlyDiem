@@ -48,8 +48,7 @@ namespace QlyDiem
                 dgvSV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvSV.Columns[0].HeaderText = "Mã Sinh Viên";
                 dgvSV.Columns[1].HeaderText = "Tên Sinh Viên";
-                dgvSV.Columns[2].HeaderText = "Mã Lóp";
-                dgvSV.Columns[3].HeaderText = "Tên Lóp";
+                dgvSV.Columns[2].HeaderText = "Tên Lớp";
                 dgvSV.Columns[3].HeaderText = "Ngày Sinh";
                 dgvSV.Columns[4].HeaderText = "Quê Quán";
                 dgvSV.Columns[5].HeaderText = "Giới Tính"; 

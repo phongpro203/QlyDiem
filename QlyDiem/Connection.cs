@@ -9,7 +9,7 @@ namespace QlyDiem
 {
     internal class Connection
     {
-        private static string sqlcoconnectstring = "Data Source=(local);Initial Catalog=QlyDiem;Integrated Security=True";
+        private static string sqlcoconnectstring = "server=DESKTOP-E2UORV7\\TESTDB;database=quanlydiem;integrated security=true";
         public static SqlConnection getSqlConnection()
         {
             return new SqlConnection(sqlcoconnectstring);
