@@ -82,16 +82,6 @@ namespace QlyDiem
             tbMaMon.Focus();
         }
 
-        private void label15_Click(object sender, EventArgs e)
-        {
-            btnThem_Click(sender, e);
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            btnThem_Click(sender, e);
-        }
-
         private void btnTatCa_Click(object sender, EventArgs e)
         {
             tbTimKiemTheoMa.Clear();
@@ -140,17 +130,6 @@ namespace QlyDiem
                 MessageBox.Show("Lỗi Không sửa được ", "Lỗi");
             }
         }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-            btnSua_Click(sender, e);
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            btnSua_Click(sender, e);
-        }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string maMon = tbMaMon.Text;
@@ -164,6 +143,17 @@ namespace QlyDiem
             }
         }
 
+        private void label18_Click(object sender, EventArgs e)
+        {
+            btnSua_Click(sender, e);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            btnSua_Click(sender, e);
+        }
+
+
         private void label19_Click(object sender, EventArgs e)
         {
             btnXoa_Click(sender, e);
@@ -172,6 +162,20 @@ namespace QlyDiem
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             btnXoa_Click(sender, e);
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+            btnRefresh_Click(sender, e);
+        }
+        private void label15_Click(object sender, EventArgs e)
+        {
+            btnThem_Click(sender, e);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            btnThem_Click(sender, e);
         }
     }
 }

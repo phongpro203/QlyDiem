@@ -174,6 +174,7 @@
             this.label20.Size = new System.Drawing.Size(86, 25);
             this.label20.TabIndex = 23;
             this.label20.Text = "Làm mới";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // btnXoa
             // 

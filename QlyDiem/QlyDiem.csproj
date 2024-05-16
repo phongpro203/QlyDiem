@@ -91,6 +91,8 @@
     </Compile>
     <Compile Include="GiangVien.cs" />
     <Compile Include="GVModify.cs" />
+    <Compile Include="Lop.cs" />
+    <Compile Include="LopModify.cs" />
     <Compile Include="MHModify.cs" />
     <Compile Include="MonHoc.cs" />
     <Compile Include="Program.cs" />
