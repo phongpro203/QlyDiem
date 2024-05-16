@@ -256,6 +256,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(128, 56);
             this.btnThem.TabIndex = 27;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click_1);
             // 
             // label15
             // 

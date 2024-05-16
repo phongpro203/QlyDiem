@@ -221,5 +221,10 @@ namespace QlyDiem
         {
             btnXoa_Click(sender, e);
         }
+
+        private void btnThem_Click_1(object sender, EventArgs e)
+        {
+            btnThem_Click(sender, e);
+        }
     }
 }
