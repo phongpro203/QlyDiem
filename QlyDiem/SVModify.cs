@@ -89,7 +89,8 @@ namespace QlyDiem
             DataTable dt = new DataTable();
             connection = Connection.getSqlConnection();
             connection.Open();
-            string sql = "select * from SinhVien where MaSV = '" + MaSV + "'";
+            string sql = "select SinhVien.MaSV,SinhVien.TenSV,Lop.TenLop,SinhVien.NgaySinh,SinhVien.QueQuan,SinhVien.GioiTinh " +
+                         "from SinhVien,Lop where SinhVien.MaLop=Lop.MaLop and SinhVien.MaSV = '" + MaSV + "'";
             da = new SqlDataAdapter(sql, connection);
             da.Fill(dt);
             connection.Close();
