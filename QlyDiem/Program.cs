@@ -16,7 +16,7 @@ namespace QlyDiem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fSinhVien());
+            Application.Run(new fGiangVien());
         }
     }
 }

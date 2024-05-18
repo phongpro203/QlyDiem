@@ -87,36 +87,44 @@ namespace QlyDiem
             string tenKhoa = cbbMaKhoa.Text;
             string trinhDo = tbTrinhDo.Text;
             string queQuan = tbQueQuan.Text;
-            string sql = "select MaKhoa from Khoa where TenKhoa = '" + tenKhoa + "'";
-            SqlConnection con = Connection.getSqlConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            object oj = cmd.ExecuteScalar();
-            con.Close();
-            string maKhoa = oj.ToString(); 
-            string gioiTinh;
-            if (rdoNam.Checked)
+
+            string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
+            string maKhoa = null;
+
+            using (SqlConnection con = Connection.getSqlConnection())
             {
-                gioiTinh = "Nam";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@TenKhoa", tenKhoa);
+
+                    con.Open();
+
+                    object oj = cmd.ExecuteScalar();
+
+                    if (oj != null)
+                    {
+                        maKhoa = oj.ToString();
+                    }
+                }
             }
-            else
-            {
-                gioiTinh = "Nữ";
-            }
-            giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
+
+            string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
+
+            GiangVien giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
+
             if (gVModify.insertGV(giangVien))
             {
-                // Thêm thành công, cập nhật DataGridView
+
                 dgvSV.DataSource = gVModify.getAllGiangVien();
             }
             else
             {
-                MessageBox.Show("Lỗi Không thêm được ", "Lỗi");
+                MessageBox.Show("Lỗi: Không thêm được giảng viên.", "Lỗi");
             }
-
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            tbTimKiemTheoMa.Clear();
             tbMaGV.Clear();
             tbHoTen.Clear();
             tbNgaysinh.Clear();
@@ -147,37 +155,42 @@ namespace QlyDiem
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string maSV = tbMaGV.Text;
-            string tenSV = tbHoTen.Text;
-            string maKhoa = cbbMaKhoa.Text;
-            string queQuan = tbQueQuan.Text;
-            string trinhDo = tbTrinhDo.Text;
-            string sql = "select MaKhoa from Khoa where MaKhoa = '" + maKhoa + "'";
-            SqlConnection con = Connection.getSqlConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            object oj = cmd.ExecuteScalar();
-            con.Close();
-
-            string gioiTinh;
-            if (rdoNam.Checked)
-            {
-                gioiTinh = "Nam";
-            }
-            else
-            {
-                gioiTinh = "Nữ";
-            }
+            string maGV = tbMaGV.Text;
+            string tenGV = tbHoTen.Text;
             string ngaySinh = tbNgaysinh.Text;
-            giangVien = new GiangVien(maSV, tenSV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
+            string tenKhoa = cbbMaKhoa.Text;
+            string trinhDo = tbTrinhDo.Text;
+            string queQuan = tbQueQuan.Text;
+
+            string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
+            string maKhoa = null;
+
+            using (SqlConnection con = Connection.getSqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@TenKhoa", tenKhoa);
+                    con.Open();
+                    object oj = cmd.ExecuteScalar();
+
+                    if (oj != null)
+                    {
+                        maKhoa = oj.ToString();
+                    }
+                }
+            }
+
+            string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
+
+            GiangVien giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
+
             if (gVModify.updateGV(giangVien))
             {
-                // sửa thành công, cập nhật DataGridView
                 dgvSV.DataSource = gVModify.getAllGiangVien();
             }
             else
             {
-                MessageBox.Show("Lỗi Không sửa được ", "Lỗi");
+                MessageBox.Show("Lỗi: Không sửa được giảng viên.", "Lỗi");
             }
         }
         private void btnXoa_Click(object sender, EventArgs e)
@@ -222,9 +235,15 @@ namespace QlyDiem
             btnXoa_Click(sender, e);
         }
 
-        private void btnThem_Click_1(object sender, EventArgs e)
+        private void dgvSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnThem_Click(sender, e);
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgvSV.Rows[e.RowIndex];
+            tbMaGV.Text = Convert.ToString(row.Cells["MaGV"].Value);
+            tbHoTen.Text = Convert.ToString(row.Cells["TenGV"].Value);
+            tbNgaysinh.Text = Convert.ToString(row.Cells["NgaySinh"].Value);
+            tbQueQuan.Text = Convert.ToString(row.Cells["QueQuan"].Value);
+            tbTrinhDo.Text = Convert.ToString(row.Cells["TrinhDo"].Value);
         }
     }
 }

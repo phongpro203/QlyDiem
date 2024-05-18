@@ -34,11 +34,11 @@ namespace QlyDiem
 
                 connection.Open();
                 sqlCommand = new SqlCommand(sql, connection);
-                sqlCommand.Parameters.Add("@MaGV", SqlDbType.NVarChar).Value = gv.TenGV;
-                sqlCommand.Parameters.Add("@TenGV", SqlDbType.NVarChar).Value = gv.MaGV;
+                sqlCommand.Parameters.Add("@MaGV", SqlDbType.NVarChar).Value = gv.MaGV;
+                sqlCommand.Parameters.Add("@TenGV", SqlDbType.NVarChar).Value = gv.TenGV;
                 sqlCommand.Parameters.Add("@MaKhoa", SqlDbType.NVarChar).Value = gv.MaKhoa;
                 sqlCommand.Parameters.Add("@NgaySinh", SqlDbType.DateTime).Value = gv.NgaySinh;
-                sqlCommand.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = gv.QueQuan;               
+                sqlCommand.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = gv.QueQuan;
                 sqlCommand.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = gv.GioiTinh;
                 sqlCommand.Parameters.Add("@TrinhDo", SqlDbType.NVarChar).Value = gv.TrinhDo;
                 sqlCommand.ExecuteNonQuery();//thuc thi lenh truy van
@@ -56,30 +56,41 @@ namespace QlyDiem
         }
         public bool updateGV(GiangVien gv)
         {
-            connection = Connection.getSqlConnection();
-            string sql = "update GiangVien set TenGV = @TenGV, MaKhoa = @MaKhoa, NgaySinh = @NgaySinh, QueQuan = @QueQuan, GioiTinh = @GioiTinh, TrinhDo = @TrinhDo where MaSV = @MaSV";
-            try
+            using (var connection = Connection.getSqlConnection())
             {
-                connection.Open();
-                sqlCommand = new SqlCommand(sql, connection);
-                sqlCommand.Parameters.Add("@MaGV", SqlDbType.NVarChar).Value = gv.MaGV;
-                sqlCommand.Parameters.Add("@TenSV", SqlDbType.NVarChar).Value = gv.TenGV;
-                sqlCommand.Parameters.Add("@MaKhoa", SqlDbType.NVarChar).Value = gv.MaKhoa;
-                sqlCommand.Parameters.Add("@NgaySinh", SqlDbType.DateTime).Value = gv.NgaySinh;
-                sqlCommand.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = gv.QueQuan;
-                sqlCommand.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = gv.GioiTinh;
-                sqlCommand.Parameters.Add("@TrinhDo", SqlDbType.NVarChar).Value = gv.TrinhDo;
-                sqlCommand.ExecuteNonQuery();//thuc thi lenh truy van
+                string sql = "update GiangVien set TenGV = @TenGV, MaKhoa = @MaKhoa, NgaySinh = @NgaySinh, QueQuan = @QueQuan, GioiTinh = @GioiTinh, TrinhDo = @TrinhDo where MaGV = @MaGV";
 
+                try
+                {
+                    connection.Open();
+                    using (var sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        sqlCommand.Parameters.Add("@MaGV", SqlDbType.NVarChar).Value = gv.MaGV;
+                        sqlCommand.Parameters.Add("@TenGV", SqlDbType.NVarChar).Value = gv.TenGV;
+                        sqlCommand.Parameters.Add("@MaKhoa", SqlDbType.NVarChar).Value = gv.MaKhoa;
+                        sqlCommand.Parameters.Add("@NgaySinh", SqlDbType.DateTime).Value = gv.NgaySinh;
+                        sqlCommand.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = gv.QueQuan;
+                        sqlCommand.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = gv.GioiTinh;
+                        sqlCommand.Parameters.Add("@TrinhDo", SqlDbType.NVarChar).Value = gv.TrinhDo;
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("SQL Error: " + ex.Message);
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+
             return true;
         }
         public DataTable searchGV(string MaGV)
