@@ -334,5 +334,15 @@ namespace QlyDiem
                 }
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            btnXuatExcel_Click(sender, e);
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+            btnXuatExcel_Click(sender, e);
+        }
     }
 }
