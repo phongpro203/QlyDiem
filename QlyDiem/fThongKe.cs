@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QlyDiem
 {
@@ -175,6 +176,163 @@ namespace QlyDiem
         private void fThongKe_Activated(object sender, EventArgs e)
         {
             fThongKe_Load(sender, e);
+        }
+        public void ExportFile(DataTable dt, string sheetName, string title, string msv, SqlConnection con)
+        {
+            // Tạo ứng dụng Excel mới
+            Excel.Application oExcel = new Excel.Application();
+            oExcel.Visible = true;
+            oExcel.DisplayAlerts = false;
+
+            // Tạo một Workbook mới và lấy reference tới Sheet đầu tiên
+            Excel.Workbook oBook = oExcel.Workbooks.Add(Type.Missing);
+            Excel.Worksheet oSheet = (Excel.Worksheet)oBook.Sheets[1];
+            oSheet.Name = sheetName;
+
+            // Tạo tiêu đề cho trang tính
+            Excel.Range head = oSheet.get_Range("A1", "H1");
+            head.MergeCells = true;
+            head.Value2 = title;
+            head.Font.Bold = true;
+            head.Font.Name = "Arial";
+            head.Font.Size = 20;
+            head.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo tên các cột
+            string[] columnNames = { "MSV", "Tên sinh viên", "Mã môn", "Tên môn", "Học kỳ", "Điểm thường xuyên", "Điểm thi", "Điểm TB" };
+            for (int i = 0; i < columnNames.Length; i++)
+            {
+                Excel.Range cell = oSheet.Cells[3, i + 1];
+                cell.Value2 = columnNames[i];
+                cell.Font.Bold = true;
+                cell.ColumnWidth = 15; // Đặt độ rộng mặc định cho các cột
+
+                // Đặt độ rộng riêng cho cột "Tên môn"
+                if (columnNames[i] == "Tên môn")
+                {
+                    cell.ColumnWidth = 25;
+                }
+
+                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                cell.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+            }
+
+            // Điền dữ liệu từ DataTable vào Excel
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+                    Excel.Range cell = oSheet.Cells[i + 4, j + 1];
+                    cell.Value2 = dt.Rows[i][j];
+                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    cell.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                }
+            }
+
+            // Tính điểm trung bình cộng của cột "Điểm TB"
+            double diemtb = 0;
+            if (dt.Rows.Count > 0)
+            {
+                diemtb = dt.AsEnumerable().Average(row => row.Field<double>("DiemTB"));
+            }
+
+            // Lấy tổng số tín chỉ từ câu lệnh SQL
+            string sql = "select sum(SoTinChi) from BangDiem, MonHoc where MaSV = @MaSV and BangDiem.MaMon = MonHoc.MaMon";
+            SqlCommand sqlCommand = new SqlCommand(sql, con);
+            sqlCommand.Parameters.AddWithValue("@MaSV", msv);
+            object soTCObj = sqlCommand.ExecuteScalar();
+            double soTC = (soTCObj != DBNull.Value) ? Convert.ToDouble(soTCObj) : 0;
+
+            // Xác định học lực
+            string hocLuc;
+            if (diemtb >= 9.0)
+            {
+                hocLuc = "Xuất sắc";
+            }
+            else if (diemtb >= 8.0)
+            {
+                hocLuc = "Giỏi";
+            }
+            else if (diemtb >= 7.0)
+            {
+                hocLuc = "Khá";
+            }
+            else if (diemtb >= 5.0)
+            {
+                hocLuc = "Trung Bình";
+            }
+            else if (diemtb >= 4.0)
+            {
+                hocLuc = "Yếu";
+            }
+            else
+            {
+                hocLuc = "Kém";
+            }
+
+            // Thêm ba dòng chữ vào dưới bảng
+            int rowStartIndex = dt.Rows.Count + 5;
+            Excel.Range diemTBRange = oSheet.Cells[rowStartIndex, 1];
+            diemTBRange.Value2 = $"Điểm trung bình: {diemtb:N2}";
+            diemTBRange.Font.Bold = true;
+            diemTBRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+            Excel.Range soTCRange = oSheet.Cells[rowStartIndex + 1, 1];
+            soTCRange.Value2 = $"Tổng số tín chỉ: {soTC}";
+            soTCRange.Font.Bold = true;
+            soTCRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+            Excel.Range hocLucRange = oSheet.Cells[rowStartIndex + 2, 1];
+            hocLucRange.Value2 = $"Học lực: {hocLuc}";
+            hocLucRange.Font.Bold = true;
+            hocLucRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+            // Lưu tệp Excel
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*",
+                FileName = "DataExport.xlsx"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                oBook.SaveAs(saveFileDialog.FileName);
+                MessageBox.Show("Dữ liệu đã được xuất thành công vào tập tin Excel.");
+            }
+
+            // Đóng Workbook và ứng dụng Excel
+            oBook.Close();
+            oExcel.Quit();
+
+            // Giải phóng tài nguyên
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(oBook);
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(oExcel);
+            oBook = null;
+            oExcel = null;
+            GC.Collect();
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            string msv = tbTimKiemTheoMa.Text;
+            string sql = "SELECT \r\n    SinhVien.MaSV, \r\n    SinhVien.TenSV,\r\n    MonHoc.MaMon,\r\n    MonHoc.TenMon,\r\n    BangDiem.HocKy,\r\n    BangDiem.DiemThuongXuyen,\r\n    BangDiem.DiemThi,\r\n    ROUND((BangDiem.DiemThi*0.6 + BangDiem.DiemThuongXuyen*0.4), 2) AS DiemTB\r\nFROM \r\n    SinhVien\r\nJOIN \r\n    BangDiem ON SinhVien.MaSV = BangDiem.MaSV\r\nJOIN \r\n    MonHoc ON BangDiem.MaMon = MonHoc.MaMon\r\nWHERE \r\n    BangDiem.MaSV = @MaSV\r\nGROUP BY \r\n    SinhVien.MaSV, \r\n    SinhVien.TenSV,\r\n    MonHoc.MaMon,\r\n    MonHoc.TenMon,\r\n    BangDiem.HocKy,\r\n    BangDiem.DiemThuongXuyen,\r\n    BangDiem.DiemThi";
+            con = Connection.getSqlConnection();
+            con.Open();
+            using (SqlCommand sqlCommand = new SqlCommand(sql, con))
+            {
+                sqlCommand.Parameters.AddWithValue("@MaSV", msv);
+                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand))
+                {
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt); // Điền dữ liệu vào DataTable
+                    dgvThongKe.DataSource = dt;
+                    // Gọi hàm ExportFile để xuất dữ liệu ra Excel
+                    ExportFile(dt, "Sheet1", "Báo cáo điểm sinh viên",msv,con);
+                    con.Close();
+                }
+            }
         }
     }
 }

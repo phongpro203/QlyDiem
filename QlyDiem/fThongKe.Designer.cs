@@ -89,6 +89,7 @@
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(163, 44);
             this.btnXuatExcel.TabIndex = 28;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // label15
             // 
