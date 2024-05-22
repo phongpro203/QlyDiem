@@ -18,6 +18,8 @@ namespace QlyDiem
         fGiangVien fGiangVien;
         fLop fLop;
         fMonHoc fMonHoc;
+        fThongKe fThongKe;
+        private bool isExiting = false;
         public fMain()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace QlyDiem
             fGiangVien = new fGiangVien();
             fLop = new fLop();
             fMonHoc = new fMonHoc();
+            fThongKe = new fThongKe();
             //tao form con
             fDiem.MdiParent = this;
             fDiem.Dock = DockStyle.Fill;
@@ -38,6 +41,8 @@ namespace QlyDiem
             fLop.Dock = DockStyle.Fill;
             fMonHoc.MdiParent = this;
             fMonHoc.Dock = DockStyle.Fill;
+            fThongKe.MdiParent = this;
+            fThongKe.Dock = DockStyle.Fill;
         }
         private void hideAllForm()
         {
@@ -76,6 +81,11 @@ namespace QlyDiem
             hideAllForm();
             fMonHoc.Show();
         }
+        private void ThongKeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hideAllForm();
+            fThongKe.Show();
+        }
 
         private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -89,12 +99,39 @@ namespace QlyDiem
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult tl;
-            tl = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            isExiting = true;
+            DialogResult tl = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (tl == DialogResult.Yes)
             {
                 Application.Exit();
             }
         }
+
+        private void fMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void fMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!isExiting)
+            {
+                DialogResult tl = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (tl == DialogResult.No)
+                {
+                    e.Cancel = true; 
+                }
+                else
+                {
+                    isExiting = true; 
+                }
+            }
+            else
+            {
+                isExiting = false; 
+            }
+
+        }
+
     }
 }

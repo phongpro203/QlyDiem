@@ -177,5 +177,10 @@ namespace QlyDiem
         {
             btnThem_Click(sender, e);
         }
+
+        private void fMonHoc_Activated(object sender, EventArgs e)
+        {
+            fMonHoc_Load(sender, e);
+        }
     }
 }

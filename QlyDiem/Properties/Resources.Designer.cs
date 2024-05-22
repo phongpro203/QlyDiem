@@ -154,6 +154,16 @@ namespace QlyDiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ms_excel_icon_2048x2026_nws24wyy {
+            get {
+                object obj = ResourceManager.GetObject("ms-excel-icon-2048x2026-nws24wyy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap my_account_login {
             get {
                 object obj = ResourceManager.GetObject("my-account-login", resourceCulture);

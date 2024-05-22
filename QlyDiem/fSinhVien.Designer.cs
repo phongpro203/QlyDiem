@@ -82,7 +82,7 @@
             this.dgvSV.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSV.Location = new System.Drawing.Point(48, 421);
-            this.dgvSV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvSV.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSV.Name = "dgvSV";
             this.dgvSV.RowHeadersWidth = 51;
             this.dgvSV.Size = new System.Drawing.Size(1146, 287);
@@ -119,7 +119,7 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.tbMaSV);
             this.panel2.Location = new System.Drawing.Point(48, 184);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1146, 227);
             this.panel2.TabIndex = 16;
@@ -140,7 +140,7 @@
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.ForeColor = System.Drawing.Color.MistyRose;
             this.btnRefresh.Location = new System.Drawing.Point(841, 26);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(114, 45);
             this.btnRefresh.TabIndex = 31;
@@ -168,7 +168,7 @@
             this.btnXoa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXoa.ForeColor = System.Drawing.Color.MistyRose;
             this.btnXoa.Location = new System.Drawing.Point(985, 126);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(114, 45);
             this.btnXoa.TabIndex = 29;
@@ -191,7 +191,7 @@
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(39, 36);
             this.pictureBox3.TabIndex = 0;
@@ -207,7 +207,7 @@
             this.btnSua.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSua.ForeColor = System.Drawing.Color.MistyRose;
             this.btnSua.Location = new System.Drawing.Point(841, 126);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(114, 45);
             this.btnSua.TabIndex = 28;
@@ -230,7 +230,7 @@
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(39, 36);
             this.pictureBox2.TabIndex = 0;
@@ -246,7 +246,7 @@
             this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThem.ForeColor = System.Drawing.Color.MistyRose;
             this.btnThem.Location = new System.Drawing.Point(985, 25);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(114, 45);
             this.btnThem.TabIndex = 27;
@@ -269,7 +269,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 36);
             this.pictureBox1.TabIndex = 0;
@@ -281,7 +281,7 @@
             this.cbbLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbLop.FormattingEnabled = true;
             this.cbbLop.Location = new System.Drawing.Point(557, 70);
-            this.cbbLop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbLop.Margin = new System.Windows.Forms.Padding(4);
             this.cbbLop.Name = "cbbLop";
             this.cbbLop.Size = new System.Drawing.Size(208, 28);
             this.cbbLop.TabIndex = 26;
@@ -302,7 +302,7 @@
             this.panel3.Controls.Add(this.rdoNu);
             this.panel3.Controls.Add(this.rdoNam);
             this.panel3.Location = new System.Drawing.Point(107, 162);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(256, 57);
             this.panel3.TabIndex = 11;
@@ -311,7 +311,7 @@
             // 
             this.rdoNu.AutoSize = true;
             this.rdoNu.Location = new System.Drawing.Point(75, 20);
-            this.rdoNu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoNu.Margin = new System.Windows.Forms.Padding(4);
             this.rdoNu.Name = "rdoNu";
             this.rdoNu.Size = new System.Drawing.Size(45, 20);
             this.rdoNu.TabIndex = 13;
@@ -323,7 +323,7 @@
             // 
             this.rdoNam.AutoSize = true;
             this.rdoNam.Location = new System.Drawing.Point(4, 20);
-            this.rdoNam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoNam.Margin = new System.Windows.Forms.Padding(4);
             this.rdoNam.Name = "rdoNam";
             this.rdoNam.Size = new System.Drawing.Size(57, 20);
             this.rdoNam.TabIndex = 12;
@@ -357,7 +357,7 @@
             // 
             this.tbHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbHoTen.Location = new System.Drawing.Point(107, 75);
-            this.tbHoTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbHoTen.Margin = new System.Windows.Forms.Padding(4);
             this.tbHoTen.Name = "tbHoTen";
             this.tbHoTen.Size = new System.Drawing.Size(264, 26);
             this.tbHoTen.TabIndex = 9;
@@ -388,7 +388,7 @@
             // 
             this.tbQueQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbQueQuan.Location = new System.Drawing.Point(557, 23);
-            this.tbQueQuan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbQueQuan.Margin = new System.Windows.Forms.Padding(4);
             this.tbQueQuan.Name = "tbQueQuan";
             this.tbQueQuan.Size = new System.Drawing.Size(208, 26);
             this.tbQueQuan.TabIndex = 5;
@@ -408,7 +408,7 @@
             // 
             this.tbMaSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMaSV.Location = new System.Drawing.Point(107, 22);
-            this.tbMaSV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbMaSV.Margin = new System.Windows.Forms.Padding(4);
             this.tbMaSV.Name = "tbMaSV";
             this.tbMaSV.Size = new System.Drawing.Size(264, 26);
             this.tbMaSV.TabIndex = 3;
@@ -431,7 +431,7 @@
             this.panel1.Controls.Add(this.btnTimKiem);
             this.panel1.Controls.Add(this.tbTimKiemTheoMa);
             this.panel1.Location = new System.Drawing.Point(48, 88);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1146, 71);
             this.panel1.TabIndex = 14;
@@ -442,7 +442,7 @@
             this.btnTatCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTatCa.ForeColor = System.Drawing.SystemColors.Info;
             this.btnTatCa.Location = new System.Drawing.Point(741, 13);
-            this.btnTatCa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTatCa.Margin = new System.Windows.Forms.Padding(4);
             this.btnTatCa.Name = "btnTatCa";
             this.btnTatCa.Size = new System.Drawing.Size(100, 43);
             this.btnTatCa.TabIndex = 6;
@@ -457,7 +457,7 @@
             this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimKiem.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.btnTimKiem.Location = new System.Drawing.Point(633, 13);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(100, 43);
             this.btnTimKiem.TabIndex = 5;
@@ -470,7 +470,7 @@
             this.tbTimKiemTheoMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTimKiemTheoMa.ForeColor = System.Drawing.SystemColors.GrayText;
             this.tbTimKiemTheoMa.Location = new System.Drawing.Point(52, 23);
-            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4);
             this.tbTimKiemTheoMa.Name = "tbTimKiemTheoMa";
             this.tbTimKiemTheoMa.Size = new System.Drawing.Size(532, 26);
             this.tbTimKiemTheoMa.TabIndex = 0;
@@ -502,6 +502,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fSinhVien";
             this.Text = "fSinhVien";
+            this.Activated += new System.EventHandler(this.fSinhVien_Activated);
             this.Load += new System.EventHandler(this.fSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.panel2.ResumeLayout(false);

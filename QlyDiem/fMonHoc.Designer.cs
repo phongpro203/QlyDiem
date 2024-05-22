@@ -414,6 +414,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fMonHoc";
             this.Text = "fMonHoc";
+            this.Activated += new System.EventHandler(this.fMonHoc_Activated);
             this.Load += new System.EventHandler(this.fMonHoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMH)).EndInit();
             this.panel2.ResumeLayout(false);

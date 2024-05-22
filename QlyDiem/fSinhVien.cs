@@ -313,5 +313,10 @@ namespace QlyDiem
         {
             btnXoa_Click(sender, e);
         }
+
+        private void fSinhVien_Activated(object sender, EventArgs e)
+        {
+            fSinhVien_Load(sender, e);
+        }
     }
 }

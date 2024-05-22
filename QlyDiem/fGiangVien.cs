@@ -110,7 +110,7 @@ namespace QlyDiem
 
             string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
 
-            GiangVien giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
+            giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
 
             if (gVModify.insertGV(giangVien))
             {
@@ -244,6 +244,11 @@ namespace QlyDiem
             tbNgaysinh.Text = Convert.ToString(row.Cells["NgaySinh"].Value);
             tbQueQuan.Text = Convert.ToString(row.Cells["QueQuan"].Value);
             tbTrinhDo.Text = Convert.ToString(row.Cells["TrinhDo"].Value);
+        }
+
+        private void fGiangVien_Activated(object sender, EventArgs e)
+        {
+            fGiangVien_Load(sender, e);
         }
     }
 }

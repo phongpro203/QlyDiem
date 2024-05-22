@@ -67,13 +67,25 @@ namespace QlyDiem
             string maLop = tbMaLop.Text;
             string tenLop = tbTenLop.Text;
             string khoa = cbbMaKhoa.Text;
-            string sql = "select MaKhoa from Khoa where TenKhoa = N'" + khoa + "'";
-            SqlConnection con = Connection.getSqlConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            object oj = cmd.ExecuteScalar();
-            con.Close();
-            string maKhoa = oj.ToString();
+            string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
+            string maKhoa = null;
+
+            using (SqlConnection con = Connection.getSqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@TenKhoa",khoa);
+
+                    con.Open();
+
+                    object oj = cmd.ExecuteScalar();
+
+                    if (oj != null)
+                    {
+                        maKhoa = oj.ToString();
+                    }
+                }
+            }
             lop = new Lop(maLop, tenLop, maKhoa);
             if (lopModify.update(lop))
             {
@@ -88,12 +100,91 @@ namespace QlyDiem
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            string maLop = tbMaLop.Text;
+            string tenLop = tbTenLop.Text;
+            string khoa = cbbMaKhoa.Text;
+            string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
+            string maKhoa = null;
 
+            using (SqlConnection con = Connection.getSqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@TenKhoa", khoa);
+
+                    con.Open();
+
+                    object oj = cmd.ExecuteScalar();
+
+                    if (oj != null)
+                    {
+                        maKhoa = oj.ToString();
+                    }
+                }
+            }
+            lop = new Lop(maLop, tenLop, maKhoa);
+            if (lopModify.insertlop(lop))
+            {
+                // sửa thành công, cập nhật DataGridView
+                dgvSV.DataSource = lopModify.getAllopHoc();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi Không thêm được ", "Lỗi");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            string ml = tbMaLop.Text;
+            if (lopModify.delete(ml))
+            {
+                dgvSV.DataSource = lopModify.getAllopHoc();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi Không xóa được ", "Lỗi");
+            }
+        }
 
+        private void label18_Click(object sender, EventArgs e)
+        {
+            btnSua_Click(sender, e);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            btnSua_Click(sender, e);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            btnThem_Click(sender, e);
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+            btnThem_Click(sender, e);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            btnXoa_Click(sender, e);
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+            btnXoa_Click(sender, e);
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+            btnRefresh_Click(sender, e);
+        }
+
+        private void fLop_Activated(object sender, EventArgs e)
+        {
+            fLop_Load(sender, e);
         }
     }
 }

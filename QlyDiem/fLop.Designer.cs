@@ -134,6 +134,7 @@
             this.label20.Size = new System.Drawing.Size(86, 25);
             this.label20.TabIndex = 23;
             this.label20.Text = "Làm mới";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // btnXoa
             // 
@@ -160,6 +161,7 @@
             this.label19.Size = new System.Drawing.Size(48, 25);
             this.label19.TabIndex = 23;
             this.label19.Text = "Xóa";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // pictureBox3
             // 
@@ -171,6 +173,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(39, 36);
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // btnSua
             // 
@@ -197,6 +200,7 @@
             this.label18.Size = new System.Drawing.Size(48, 25);
             this.label18.TabIndex = 23;
             this.label18.Text = "Sửa";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // pictureBox2
             // 
@@ -208,6 +212,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(39, 36);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // btnThem
             // 
@@ -234,6 +239,7 @@
             this.label15.Size = new System.Drawing.Size(63, 25);
             this.label15.TabIndex = 23;
             this.label15.Text = "Thêm";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // pictureBox1
             // 
@@ -245,6 +251,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(39, 36);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // cbbMaKhoa
             // 
@@ -404,6 +411,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fLop";
             this.Text = "fLop";
+            this.Activated += new System.EventHandler(this.fLop_Activated);
             this.Load += new System.EventHandler(this.fLop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.panel2.ResumeLayout(false);

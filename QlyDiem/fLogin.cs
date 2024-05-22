@@ -55,11 +55,13 @@ namespace QlyDiem
                 txtpass.Focus();
                 return;
             }
-            string sql = "select * from DangNhap where TenDangNhap = '" + user + "' and MatKhau = '" + pass + "' ";
+            string sql = "select * from DangNhap where TenDangNhap = @TenDangNhap and MatKhau = @MatKhau;";
             try
             {
                 sqlConnection.Open();
                 SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+                cmd.Parameters.AddWithValue("@TenDangNhap", user);
+                cmd.Parameters.AddWithValue("@MatKhau", pass);
                 SqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.Read())
                 {
