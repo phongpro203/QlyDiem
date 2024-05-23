@@ -32,6 +32,7 @@
             this.dgvSV = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbNgaysinh = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.tbTrinhDo = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Panel();
@@ -64,7 +65,6 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbNgaysinh = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.panel2.SuspendLayout();
             this.btnRefresh.SuspendLayout();
@@ -126,6 +126,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1146, 227);
             this.panel2.TabIndex = 10;
+            // 
+            // tbNgaysinh
+            // 
+            this.tbNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tbNgaysinh.Location = new System.Drawing.Point(118, 128);
+            this.tbNgaysinh.Name = "tbNgaysinh";
+            this.tbNgaysinh.Size = new System.Drawing.Size(115, 22);
+            this.tbNgaysinh.TabIndex = 34;
             // 
             // label4
             // 
@@ -503,14 +511,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Quản lý Giảng Viên";
             // 
-            // tbNgaysinh
-            // 
-            this.tbNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.tbNgaysinh.Location = new System.Drawing.Point(118, 128);
-            this.tbNgaysinh.Name = "tbNgaysinh";
-            this.tbNgaysinh.Size = new System.Drawing.Size(115, 22);
-            this.tbNgaysinh.TabIndex = 34;
-            // 
             // fGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -525,7 +525,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fGiangVien";
             this.Text = "fGiangVien";
-            this.Activated += new System.EventHandler(this.fGiangVien_Activated);
             this.Load += new System.EventHandler(this.fGiangVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.panel2.ResumeLayout(false);

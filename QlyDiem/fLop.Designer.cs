@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLop));
-            this.dgvSV = new System.Windows.Forms.DataGridView();
+            this.dgvLop = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnRefresh = new System.Windows.Forms.Panel();
@@ -43,7 +43,7 @@
             this.btnThem = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cbbMaKhoa = new System.Windows.Forms.ComboBox();
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.tbTimKiemTheoTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).BeginInit();
             this.panel2.SuspendLayout();
             this.btnRefresh.SuspendLayout();
             this.btnXoa.SuspendLayout();
@@ -68,15 +68,16 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgvSV
+            // dgvLop
             // 
-            this.dgvSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSV.Location = new System.Drawing.Point(417, 175);
-            this.dgvSV.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvSV.Name = "dgvSV";
-            this.dgvSV.RowHeadersWidth = 51;
-            this.dgvSV.Size = new System.Drawing.Size(798, 522);
-            this.dgvSV.TabIndex = 11;
+            this.dgvLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLop.Location = new System.Drawing.Point(417, 175);
+            this.dgvLop.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvLop.Name = "dgvLop";
+            this.dgvLop.RowHeadersWidth = 51;
+            this.dgvLop.Size = new System.Drawing.Size(798, 522);
+            this.dgvLop.TabIndex = 11;
+            this.dgvLop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLop_CellContentClick);
             // 
             // label6
             // 
@@ -96,7 +97,7 @@
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
             this.panel2.Controls.Add(this.btnThem);
-            this.panel2.Controls.Add(this.cbbMaKhoa);
+            this.panel2.Controls.Add(this.cbbKhoa);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label9);
@@ -253,15 +254,15 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // cbbMaKhoa
+            // cbbKhoa
             // 
-            this.cbbMaKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbMaKhoa.FormattingEnabled = true;
-            this.cbbMaKhoa.Location = new System.Drawing.Point(114, 163);
-            this.cbbMaKhoa.Margin = new System.Windows.Forms.Padding(4);
-            this.cbbMaKhoa.Name = "cbbMaKhoa";
-            this.cbbMaKhoa.Size = new System.Drawing.Size(245, 28);
-            this.cbbMaKhoa.TabIndex = 26;
+            this.cbbKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbKhoa.FormattingEnabled = true;
+            this.cbbKhoa.Location = new System.Drawing.Point(114, 163);
+            this.cbbKhoa.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbKhoa.Name = "cbbKhoa";
+            this.cbbKhoa.Size = new System.Drawing.Size(245, 28);
+            this.cbbKhoa.TabIndex = 26;
             // 
             // label16
             // 
@@ -359,6 +360,7 @@
             this.btnTatCa.TabIndex = 6;
             this.btnTatCa.Text = "Tất Cả";
             this.btnTatCa.UseVisualStyleBackColor = false;
+            this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
             // 
             // btnTimKiem
             // 
@@ -373,6 +375,7 @@
             this.btnTimKiem.TabIndex = 5;
             this.btnTimKiem.Text = "Tìm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // tbTimKiemTheoTen
             // 
@@ -383,7 +386,8 @@
             this.tbTimKiemTheoTen.Name = "tbTimKiemTheoTen";
             this.tbTimKiemTheoTen.Size = new System.Drawing.Size(360, 26);
             this.tbTimKiemTheoTen.TabIndex = 0;
-            this.tbTimKiemTheoTen.Text = "nhập mã lớp";
+            this.tbTimKiemTheoTen.Text = "Nhập mã lớp";
+            this.tbTimKiemTheoTen.Click += new System.EventHandler(this.tbTimKiemTheoTen_Click);
             // 
             // label1
             // 
@@ -402,7 +406,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1242, 746);
-            this.Controls.Add(this.dgvSV);
+            this.Controls.Add(this.dgvLop);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
@@ -411,9 +415,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fLop";
             this.Text = "fLop";
-            this.Activated += new System.EventHandler(this.fLop_Activated);
             this.Load += new System.EventHandler(this.fLop_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.btnRefresh.ResumeLayout(false);
@@ -436,7 +439,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvSV;
+        private System.Windows.Forms.DataGridView dgvLop;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel btnRefresh;
@@ -450,7 +453,7 @@
         private System.Windows.Forms.Panel btnThem;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox cbbMaKhoa;
+        private System.Windows.Forms.ComboBox cbbKhoa;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
