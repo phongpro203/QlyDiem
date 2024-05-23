@@ -194,11 +194,6 @@ namespace QlyDiem
             btnRefresh_Click(sender, e);
         }
 
-        private void fLop_Activated(object sender, EventArgs e)
-        {
-            fLop_Load(sender, e);
-        }
-
         private void dgvSV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = new DataGridViewRow();
@@ -244,8 +239,21 @@ namespace QlyDiem
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string tenLop = tbTimKiemTheoTen.Text;
+            string macdinh = "Nhập mã lớp";
+            if (tenLop == macdinh || tenLop == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã lớp");
+                return;
+            }
             try
             {
+                DataTable result = lopModify.search(tenLop);
+
+                if (result.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu", "Thông báo");
+                    return;
+                }
                 dgvLop.DataSource = lopModify.search(tenLop);
                 dgvLop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvLop.Columns[0].HeaderText = "Mã lớp";

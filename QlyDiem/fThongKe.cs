@@ -181,10 +181,6 @@ namespace QlyDiem
             }
         }
 
-        private void fThongKe_Activated(object sender, EventArgs e)
-        {
-            fThongKe_Load(sender, e);
-        }
         public void ExportFile(DataTable dt, string sheetName, string title, string msv, SqlConnection con)
         {
             // Tạo ứng dụng Excel mới
@@ -351,6 +347,11 @@ namespace QlyDiem
         private void label15_Click(object sender, EventArgs e)
         {
             btnXuatExcel_Click(sender, e);
+        }
+
+        private void fThongKe_Activated_1(object sender, EventArgs e)
+        {
+            fThongKe_Load(sender, e);
         }
     }
 }

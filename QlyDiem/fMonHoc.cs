@@ -97,8 +97,21 @@ namespace QlyDiem
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string maMon = tbTimKiemTheoMa.Text;
+            string macdinh = "Nhập mã môn cần tìm";
+            if (maMon == macdinh || maMon == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã môn");
+                return;
+            }
             try
             {
+                DataTable result = mHModify.search(maMon);
+
+                if (result.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu", "Thông báo");
+                    return;
+                }
                 dgvMH.DataSource = mHModify.search(maMon);
                 dgvMH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvMH.Columns[0].HeaderText = "Mã Môn";
@@ -187,11 +200,6 @@ namespace QlyDiem
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             btnThem_Click(sender, e);
-        }
-
-        private void fMonHoc_Activated(object sender, EventArgs e)
-        {
-            fMonHoc_Load(sender, e);
         }
 
         private void tbTimKiemTheoMa_Click(object sender, EventArgs e)

@@ -277,6 +277,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fThongKe";
             this.Text = "fThongKe";
+            this.Activated += new System.EventHandler(this.fThongKe_Activated_1);
             this.Load += new System.EventHandler(this.fThongKe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvThongKe)).EndInit();
             this.btnXuatExcel.ResumeLayout(false);

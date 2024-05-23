@@ -66,9 +66,22 @@ namespace QlyDiem
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            string macdinh = "Nhập mã giảng viên";
             string maGV = tbTimKiemTheoMa.Text;
+            if (maGV == macdinh || maGV == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã giảng viên");
+                return;
+            }
             try
             {
+                DataTable result = gVModify.searchGV(maGV);
+
+                if (result.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu", "Thông báo");
+                    return;
+                }
                 dgvSV.DataSource = gVModify.searchGV(maGV);
                 dgvSV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvSV.Columns[0].HeaderText = "Mã Giảng Viên";
@@ -294,11 +307,6 @@ namespace QlyDiem
                 rdoNu.Checked = true;
             }
             tbTrinhDo.Text = Convert.ToString(row.Cells["TrinhDo"].Value);
-        }
-
-        private void fGiangVien_Activated(object sender, EventArgs e)
-        {
-            fGiangVien_Load(sender, e);
         }
 
         private void tbTimKiemTheoMa_Click(object sender, EventArgs e)

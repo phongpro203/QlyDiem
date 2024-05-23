@@ -330,12 +330,6 @@ namespace QlyDiem
             btnXoa_Click(sender, e);
         }
 
-        private void fSinhVien_Activated(object sender, EventArgs e)
-        {
-            fSinhVien_Load(sender, e);
-        }
-
-
         private void tbTimKiemTheoMa_Click_1(object sender, EventArgs e)
         {
             tbTimKiemTheoMa.Clear();
@@ -360,6 +354,11 @@ namespace QlyDiem
             {
                 rdoNu.Checked = true;
             }
+        }
+
+        private void fSinhVien_Activated_1(object sender, EventArgs e)
+        {
+            fSinhVien_Load(sender, e);
         }
     }
 }

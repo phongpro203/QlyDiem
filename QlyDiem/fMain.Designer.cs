@@ -94,6 +94,7 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(203, 44);
             this.panel7.TabIndex = 3;
+            this.panel7.Click += new System.EventHandler(this.panel7_Click);
             // 
             // lbMH
             // 
@@ -116,6 +117,7 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // panel6
             // 
@@ -126,6 +128,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(203, 44);
             this.panel6.TabIndex = 2;
+            this.panel6.Click += new System.EventHandler(this.panel6_Click);
             // 
             // lbLTC
             // 
@@ -148,6 +151,7 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // panel5
             // 
@@ -158,6 +162,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(203, 44);
             this.panel5.TabIndex = 2;
+            this.panel5.Click += new System.EventHandler(this.panel5_Click);
             // 
             // lbGV
             // 
@@ -181,6 +186,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // panel4
             // 
@@ -192,6 +198,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(203, 44);
             this.panel4.TabIndex = 2;
+            this.panel4.Click += new System.EventHandler(this.panel4_Click);
             // 
             // label6
             // 
@@ -225,6 +232,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // panel3
             // 
@@ -235,6 +243,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 44);
             this.panel3.TabIndex = 1;
+            this.panel3.Click += new System.EventHandler(this.panel3_Click);
             // 
             // lbDiem
             // 
@@ -257,6 +266,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // panel2
             // 

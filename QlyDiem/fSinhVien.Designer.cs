@@ -504,6 +504,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fSinhVien";
             this.Text = "fSinhVien";
+            this.Activated += new System.EventHandler(this.fSinhVien_Activated_1);
             this.Load += new System.EventHandler(this.fSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.panel2.ResumeLayout(false);

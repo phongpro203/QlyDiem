@@ -501,6 +501,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fDiem";
             this.Text = "fDiem";
+            this.Activated += new System.EventHandler(this.fDiem_Activated);
             this.Load += new System.EventHandler(this.fDiem_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

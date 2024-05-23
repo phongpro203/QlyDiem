@@ -411,5 +411,10 @@ namespace QlyDiem
             cbbHK.Text = Convert.ToString(row.Cells["HocKy"].Value);
             tbDTX.Text = Convert.ToString(row.Cells["DiemThuongXuyen"].Value);
         }
+
+        private void fDiem_Activated(object sender, EventArgs e)
+        {
+            fDiem_Load(sender, e);
+        }
     }
 }

@@ -158,5 +158,55 @@ namespace QlyDiem
                 isExiting = false;
             }
         }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+            lbDiem_Click(sender, e);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            lbDiem_Click(sender, e);
+        }
+
+        private void panel4_Click(object sender, EventArgs e)
+        {
+            lbSV_Click(sender, e);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            lbSV_Click(sender, e);
+        }
+
+        private void panel5_Click(object sender, EventArgs e)
+        {
+            lbGV_Click(sender, e);
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            lbGV_Click(sender, e);
+        }
+
+        private void panel6_Click(object sender, EventArgs e)
+        {
+            lbLTC_Click(sender, e);
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            lbLTC_Click(sender, e);
+        }
+
+        private void panel7_Click(object sender, EventArgs e)
+        {
+            lbMH_Click(sender, e);
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            lbMH_Click(sender, e);
+        }
     }
 }
