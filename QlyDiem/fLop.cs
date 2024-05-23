@@ -22,7 +22,7 @@ namespace QlyDiem
 
         private void fLop_Load(object sender, EventArgs e)
         {
-            dgvSV.ReadOnly = true;
+            dgvLop.ReadOnly = true;
             lopModify = new LopModify();
             string sql = "select TenKhoa from Khoa";
             SqlConnection con = Connection.getSqlConnection();
@@ -34,20 +34,20 @@ namespace QlyDiem
             if (dataTable.Rows.Count > 0)
             {
                 // Thiết lập dữ liệu cho combo box
-                cbbMaKhoa.DataSource = dataTable;
-                cbbMaKhoa.DisplayMember = "TenKhoa"; // Tên cột bạn muốn hiển thị trong combo box
-                cbbMaKhoa.ValueMember = "TenKhoa"; // Tên cột chứa giá trị thực sự trong combo box
+                cbbKhoa.DataSource = dataTable;
+                cbbKhoa.DisplayMember = "TenKhoa"; // Tên cột bạn muốn hiển thị trong combo box
+                cbbKhoa.ValueMember = "TenKhoa"; // Tên cột chứa giá trị thực sự trong combo box
             }
             con.Close();
             try
             {
 
-                dgvSV.DataSource = lopModify.getAllopHoc();
-                dgvSV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSV.Columns[0].HeaderText = "Mã lớp";
-                dgvSV.Columns[1].HeaderText = "Tên lớp";
-                dgvSV.Columns[2].HeaderText = "Khoa";
-                dgvSV.ReadOnly = true;
+                dgvLop.DataSource = lopModify.getAllopHoc();
+                dgvLop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvLop.Columns[0].HeaderText = "Mã lớp";
+                dgvLop.Columns[1].HeaderText = "Tên lớp";
+                dgvLop.Columns[2].HeaderText = "Khoa";
+                dgvLop.ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace QlyDiem
         {
             string maLop = tbMaLop.Text;
             string tenLop = tbTenLop.Text;
-            string khoa = cbbMaKhoa.Text;
+            string khoa = cbbKhoa.Text;
             string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
             string maKhoa = null;
 
@@ -90,7 +90,7 @@ namespace QlyDiem
             if (lopModify.update(lop))
             {
                 // sửa thành công, cập nhật DataGridView
-                dgvSV.DataSource = lopModify.getAllopHoc();
+                dgvLop.DataSource = lopModify.getAllopHoc();
             }
             else
             {
@@ -102,7 +102,7 @@ namespace QlyDiem
         {
             string maLop = tbMaLop.Text;
             string tenLop = tbTenLop.Text;
-            string khoa = cbbMaKhoa.Text;
+            string khoa = cbbKhoa.Text;
             string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
             string maKhoa = null;
 
@@ -126,7 +126,7 @@ namespace QlyDiem
             if (lopModify.insertlop(lop))
             {
                 // sửa thành công, cập nhật DataGridView
-                dgvSV.DataSource = lopModify.getAllopHoc();
+                dgvLop.DataSource = lopModify.getAllopHoc();
             }
             else
             {
@@ -139,7 +139,7 @@ namespace QlyDiem
             string ml = tbMaLop.Text;
             if (lopModify.delete(ml))
             {
-                dgvSV.DataSource = lopModify.getAllopHoc();
+                dgvLop.DataSource = lopModify.getAllopHoc();
             }
             else
             {
@@ -185,6 +185,40 @@ namespace QlyDiem
         private void fLop_Activated(object sender, EventArgs e)
         {
             fLop_Load(sender, e);
+        }
+
+        private void dgvSV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgvLop.Rows[e.RowIndex];
+            tbMaLop.Text = Convert.ToString(row.Cells["MaLop"].Value);
+            tbTenLop.Text = Convert.ToString(row.Cells["TenLop"].Value);
+            cbbKhoa.Text = Convert.ToString(row.Cells["TenKhoa"].Value);
+        }
+
+        private void dgvLop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgvLop.Rows[e.RowIndex];
+            tbMaLop.Text = Convert.ToString(row.Cells["MaLop"].Value);
+            tbTenLop.Text = Convert.ToString(row.Cells["TenLop"].Value);
+            cbbKhoa.Text = Convert.ToString(row.Cells["TenKhoa"].Value);
+        }
+
+        private void tbTimKiemTheoTen_Click(object sender, EventArgs e)
+        {
+            tbTimKiemTheoTen.Text = "";
+        }
+
+        private void btnTatCa_Click(object sender, EventArgs e)
+        {
+            fLop_Load(sender, e);
+            tbTimKiemTheoTen.Text = "Nhập mã lớp";
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

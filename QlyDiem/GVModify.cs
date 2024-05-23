@@ -15,15 +15,15 @@ namespace QlyDiem
         SqlDataAdapter da = null;
         public DataTable getAllGiangVien()
         {
-           DataTable dt = new DataTable();
-            string sql = "select * from GiangVien";
+            DataTable dt = new DataTable();
+            string sql = "SELECT GiangVien.MaGV, GiangVien.TenGV, Khoa.TenKhoa, GiangVien.NgaySinh, GiangVien.QueQuan, GiangVien.GioiTinh, GiangVien.TrinhDo FROM GiangVien " +
+                "INNER JOIN Khoa ON GiangVien.MaKhoa = Khoa.MaKhoa;";
             connection = Connection.getSqlConnection();
             connection.Open();
             da = new SqlDataAdapter(sql, connection);
             da.Fill(dt);
             connection.Close();
             return dt;
-
         }
         public bool insertGV(GiangVien gv)
         {
