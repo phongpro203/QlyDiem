@@ -19,7 +19,14 @@ namespace QlyDiem
         {
             InitializeComponent();
         }
-
+        public async Task LoadDataAsync()
+        {
+            await Task.Run(() =>
+            {
+                // Thực hiện các tác vụ tải dữ liệu nặng tại đây
+                System.Threading.Thread.Sleep(2000); // Giả lập tải dữ liệu
+            });
+        }
         private void fLop_Load(object sender, EventArgs e)
         {
             dgvLop.ReadOnly = true;
@@ -218,7 +225,20 @@ namespace QlyDiem
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            
+            string tenLop = tbTimKiemTheoTen.Text;
+            try
+            {
+                dgvLop.DataSource = lopModify.search(tenLop);
+                dgvLop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvLop.Columns[0].HeaderText = "Mã lớp";
+                dgvLop.Columns[1].HeaderText = "Tên lớp";
+                dgvLop.Columns[2].HeaderText = "Khoa";
+                dgvLop.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Lỗi");
+            }
         }
     }
 }

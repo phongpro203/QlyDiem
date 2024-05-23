@@ -80,9 +80,9 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 823);
+            this.panel1.Size = new System.Drawing.Size(210, 825);
             this.panel1.TabIndex = 0;
             // 
             // panel7
@@ -287,21 +287,21 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1582, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1582, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // trangChủToolStripMenuItem
             // 
             this.trangChủToolStripMenuItem.Name = "trangChủToolStripMenuItem";
-            this.trangChủToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
+            this.trangChủToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
             this.trangChủToolStripMenuItem.Text = "Trang chủ";
             this.trangChủToolStripMenuItem.Click += new System.EventHandler(this.trangChủToolStripMenuItem_Click);
             // 
             // ThongKeToolStripMenuItem
             // 
             this.ThongKeToolStripMenuItem.Name = "ThongKeToolStripMenuItem";
-            this.ThongKeToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
+            this.ThongKeToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.ThongKeToolStripMenuItem.Text = "Thống kê";
             this.ThongKeToolStripMenuItem.Click += new System.EventHandler(this.ThongKeToolStripMenuItem_Click);
             // 
@@ -310,7 +310,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hướngDẫnSửDụngToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // hướngDẫnSửDụngToolStripMenuItem
@@ -322,7 +322,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(47, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

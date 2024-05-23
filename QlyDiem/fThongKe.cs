@@ -21,6 +21,14 @@ namespace QlyDiem
         SqlCommand sqlCommand = null;
         SqlConnection con = null;
         SqlDataAdapter da = null;
+        public async Task LoadDataAsync()
+        {
+            await Task.Run(() =>
+            {
+                // Thực hiện các tác vụ tải dữ liệu nặng tại đây
+                System.Threading.Thread.Sleep(2000); // Giả lập tải dữ liệu
+            });
+        }
         private void tbTimKiemTheoMa_Click(object sender, EventArgs e)
         {
             tbTimKiemTheoMa.Clear();

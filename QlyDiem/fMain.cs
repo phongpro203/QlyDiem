@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +6,7 @@ namespace QlyDiem
 {
     public partial class fMain : Form
     {
-        //khoi tao cac form
+        // Khởi tạo các form
         fDiem fDiem;
         fSinhVien fSinhVien;
         fGiangVien fGiangVien;
@@ -20,81 +14,114 @@ namespace QlyDiem
         fMonHoc fMonHoc;
         fThongKe fThongKe;
         private bool isExiting = false;
+
         public fMain()
         {
             InitializeComponent();
-            //khoi tao cac form
+            // Khởi tạo các form
             fDiem = new fDiem();
             fSinhVien = new fSinhVien();
             fGiangVien = new fGiangVien();
             fLop = new fLop();
             fMonHoc = new fMonHoc();
             fThongKe = new fThongKe();
-            //tao form con
-            fDiem.MdiParent = this;
-            fDiem.Dock = DockStyle.Fill;
-            fSinhVien.MdiParent = this;
-            fSinhVien.Dock = DockStyle.Fill;
-            fGiangVien.MdiParent = this;
-            fGiangVien.Dock = DockStyle.Fill;
-            fLop.MdiParent = this;
-            fLop.Dock = DockStyle.Fill;
-            fMonHoc.MdiParent = this;
-            fMonHoc.Dock = DockStyle.Fill;
-            fThongKe.MdiParent = this;
-            fThongKe.Dock = DockStyle.Fill;
+            // Thiết lập các form con
+            InitializeChildForm(fDiem);
+            InitializeChildForm(fSinhVien);
+            InitializeChildForm(fGiangVien);
+            InitializeChildForm(fLop);
+            InitializeChildForm(fMonHoc);
+            InitializeChildForm(fThongKe);
         }
-        private void hideAllForm()
+
+        private void InitializeChildForm(Form form)
+        {
+            form.MdiParent = this;
+            form.Dock = DockStyle.Fill;
+            form.Hide();
+            form.Activated += async (sender, e) => await LoadDataAsync(form);
+        }
+
+        private async Task LoadDataAsync(Form form)
+        {
+            ShowLoadingIndicator(form);
+            await Task.Run(() => {
+                // Thực hiện các tác vụ nặng tại đây
+                // Giả lập tải dữ liệu
+                System.Threading.Thread.Sleep(2000); // Thay thế bằng mã tải dữ liệu thực tế
+            });
+            HideLoadingIndicator(form);
+        }
+
+        private void ShowLoadingIndicator(Form form)
+        {
+            form.Cursor = Cursors.WaitCursor;
+        }
+
+        private void HideLoadingIndicator(Form form)
+        {
+            form.Cursor = Cursors.Default;
+        }
+
+        private void HideAllForms()
         {
             fDiem.Hide();
             fSinhVien.Hide();
-            fGiangVien.Hide();  
+            fGiangVien.Hide();
             fLop.Hide();
             fMonHoc.Hide();
+            fThongKe.Hide();
         }
+        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HideAllForms();
+        }
+        private async void ShowFormAsync(Form form)
+        {
+            HideAllForms();
+            form.Show();
+            form.BringToFront();
+            await LoadDataAsync(form);
+        }
+
         private void lbSV_Click(object sender, EventArgs e)
         {
-            hideAllForm();
-            fSinhVien.Show();
+            ShowFormAsync(fSinhVien);
         }
 
         private void lbDiem_Click(object sender, EventArgs e)
         {
-            hideAllForm();
-            fDiem.Show();
+            ShowFormAsync(fDiem);
         }
 
         private void lbGV_Click(object sender, EventArgs e)
         {
-            hideAllForm();
-            fGiangVien.Show();
+            ShowFormAsync(fGiangVien);
         }
 
         private void lbLTC_Click(object sender, EventArgs e)
         {
-            hideAllForm();
-            fLop.Show();
+            ShowFormAsync(fLop);
         }
 
         private void lbMH_Click(object sender, EventArgs e)
         {
-            hideAllForm();
-            fMonHoc.Show();
-        }
-        private void ThongKeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            hideAllForm();
-            fThongKe.Show();
+            ShowFormAsync(fMonHoc);
         }
 
-        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ThongKeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            hideAllForm();
+            ShowFormAsync(fThongKe);
+        }
+
+        private void trangChuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HideAllForms();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            hideAllForm();
+            HideAllForms();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,19 +146,17 @@ namespace QlyDiem
                 DialogResult tl = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (tl == DialogResult.No)
                 {
-                    e.Cancel = true; 
+                    e.Cancel = true;
                 }
                 else
                 {
-                    isExiting = true; 
+                    isExiting = true;
                 }
             }
             else
             {
-                isExiting = false; 
+                isExiting = false;
             }
-
         }
-
     }
 }

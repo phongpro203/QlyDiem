@@ -19,7 +19,14 @@ namespace QlyDiem
         {
             InitializeComponent();
         }
-
+        public async Task LoadDataAsync()
+        {
+            await Task.Run(() =>
+            {
+                // Thực hiện các tác vụ tải dữ liệu nặng tại đây
+                System.Threading.Thread.Sleep(2000); // Giả lập tải dữ liệu
+            });
+        }
         private void fGiangVien_Load(object sender, EventArgs e)
         {
             dgvSV.ReadOnly = true;
