@@ -61,10 +61,10 @@
             this.tbMaGV = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             this.btnTatCa = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.panel2.SuspendLayout();
             this.btnRefresh.SuspendLayout();
@@ -80,6 +80,7 @@
             // 
             // dgvSV
             // 
+            this.dgvSV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSV.Location = new System.Drawing.Point(46, 410);
             this.dgvSV.Margin = new System.Windows.Forms.Padding(4);
@@ -459,6 +460,18 @@
             this.panel1.Size = new System.Drawing.Size(1146, 71);
             this.panel1.TabIndex = 8;
             // 
+            // tbTimKiemTheoMa
+            // 
+            this.tbTimKiemTheoMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimKiemTheoMa.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbTimKiemTheoMa.Location = new System.Drawing.Point(32, 23);
+            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTimKiemTheoMa.Name = "tbTimKiemTheoMa";
+            this.tbTimKiemTheoMa.Size = new System.Drawing.Size(532, 26);
+            this.tbTimKiemTheoMa.TabIndex = 7;
+            this.tbTimKiemTheoMa.Text = "Nhập mã giảng viên";
+            this.tbTimKiemTheoMa.Click += new System.EventHandler(this.tbTimKiemTheoMa_Click);
+            // 
             // btnTatCa
             // 
             this.btnTatCa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -499,18 +512,6 @@
             this.label1.Size = new System.Drawing.Size(383, 46);
             this.label1.TabIndex = 7;
             this.label1.Text = "Quản lý Giảng Viên";
-            // 
-            // tbTimKiemTheoMa
-            // 
-            this.tbTimKiemTheoMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimKiemTheoMa.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbTimKiemTheoMa.Location = new System.Drawing.Point(32, 23);
-            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTimKiemTheoMa.Name = "tbTimKiemTheoMa";
-            this.tbTimKiemTheoMa.Size = new System.Drawing.Size(532, 26);
-            this.tbTimKiemTheoMa.TabIndex = 7;
-            this.tbTimKiemTheoMa.Text = "Nhập mã giảng viên";
-            this.tbTimKiemTheoMa.Click += new System.EventHandler(this.tbTimKiemTheoMa_Click);
             // 
             // fGiangVien
             // 
