@@ -54,7 +54,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tbHoTen = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbNgaysinh = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbQueQuan = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,6 +64,7 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbNgaysinh = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.panel2.SuspendLayout();
             this.btnRefresh.SuspendLayout();
@@ -103,6 +103,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.tbNgaysinh);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.tbTrinhDo);
             this.panel2.Controls.Add(this.btnRefresh);
@@ -116,7 +117,6 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.tbHoTen);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.tbNgaysinh);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.tbQueQuan);
             this.panel2.Controls.Add(this.label5);
@@ -388,17 +388,6 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "Ngày sinh:";
             // 
-            // tbNgaysinh
-            // 
-            this.tbNgaysinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNgaysinh.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbNgaysinh.Location = new System.Drawing.Point(120, 128);
-            this.tbNgaysinh.Margin = new System.Windows.Forms.Padding(4);
-            this.tbNgaysinh.Name = "tbNgaysinh";
-            this.tbNgaysinh.Size = new System.Drawing.Size(243, 26);
-            this.tbNgaysinh.TabIndex = 7;
-            this.tbNgaysinh.Text = "mm/dd/yyyy";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -514,6 +503,14 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Quản lý Giảng Viên";
             // 
+            // tbNgaysinh
+            // 
+            this.tbNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.tbNgaysinh.Location = new System.Drawing.Point(118, 128);
+            this.tbNgaysinh.Name = "tbNgaysinh";
+            this.tbNgaysinh.Size = new System.Drawing.Size(115, 22);
+            this.tbNgaysinh.TabIndex = 34;
+            // 
             // fGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -580,7 +577,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbHoTen;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbNgaysinh;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbQueQuan;
         private System.Windows.Forms.Label label5;
@@ -591,5 +587,6 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox tbTimKiemTheoMa;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker tbNgaysinh;
     }
 }

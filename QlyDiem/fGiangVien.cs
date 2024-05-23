@@ -46,7 +46,7 @@ namespace QlyDiem
                 dgvSV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvSV.Columns[0].HeaderText = "Mã Giảng Viên";
                 dgvSV.Columns[1].HeaderText = "Tên Giảng Viên";
-                dgvSV.Columns[2].HeaderText = "Mã Khoa";
+                dgvSV.Columns[2].HeaderText = "Tên Khoa";
                 dgvSV.Columns[3].HeaderText = "Ngày Sinh";
                 dgvSV.Columns[4].HeaderText = "Quê Quán";
                 dgvSV.Columns[5].HeaderText = "Giới Tính";
@@ -67,7 +67,7 @@ namespace QlyDiem
                 dgvSV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvSV.Columns[0].HeaderText = "Mã Giảng Viên";
                 dgvSV.Columns[1].HeaderText = "Tên Giảng Viên";
-                dgvSV.Columns[2].HeaderText = "Mã Khoa";
+                dgvSV.Columns[2].HeaderText = "Tên Khoa";
                 dgvSV.Columns[3].HeaderText = "Ngày Sinh";
                 dgvSV.Columns[4].HeaderText = "Quê Quán";
                 dgvSV.Columns[5].HeaderText = "Giới Tính";
@@ -88,38 +88,50 @@ namespace QlyDiem
             string trinhDo = tbTrinhDo.Text;
             string queQuan = tbQueQuan.Text;
 
-            string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
-            string maKhoa = null;
-
-            using (SqlConnection con = Connection.getSqlConnection())
+            if (string.IsNullOrEmpty(maGV) || string.IsNullOrEmpty(tenGV) || string.IsNullOrEmpty(ngaySinh) || string.IsNullOrEmpty(tenKhoa) || string.IsNullOrEmpty(trinhDo) || string.IsNullOrEmpty(queQuan))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.Parameters.AddWithValue("@TenKhoa", tenKhoa);
-
-                    con.Open();
-
-                    object oj = cmd.ExecuteScalar();
-
-                    if (oj != null)
-                    {
-                        maKhoa = oj.ToString();
-                    }
-                }
-            }
-
-            string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
-
-            giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
-
-            if (gVModify.insertGV(giangVien))
-            {
-
-                dgvSV.DataSource = gVModify.getAllGiangVien();
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo");
             }
             else
             {
-                MessageBox.Show("Lỗi: Không thêm được giảng viên.", "Lỗi");
+                string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
+                string maKhoa = null;
+
+                using (SqlConnection con = Connection.getSqlConnection())
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@TenKhoa", tenKhoa);
+                        con.Open();
+                        object oj = cmd.ExecuteScalar();
+
+                        if (oj != null)
+                        {
+                            maKhoa = oj.ToString();
+                        }
+                    }
+                }
+
+                if (maKhoa != null)
+                {
+                    string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
+
+                    GiangVien giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
+
+                    if (gVModify.insertGV(giangVien))
+                    {
+                        dgvSV.DataSource = gVModify.getAllGiangVien();
+                        MessageBox.Show("Thêm thành công");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi: Không thêm được giảng viên.", "Lỗi");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy Mã Khoa tương ứng với Tên Khoa đã chọn.", "Lỗi");
+                }
             }
         }
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -127,7 +139,6 @@ namespace QlyDiem
             tbTimKiemTheoMa.Clear();
             tbMaGV.Clear();
             tbHoTen.Clear();
-            tbNgaysinh.Clear();
             tbTrinhDo.Clear();
             tbQueQuan.Clear();
         }
@@ -141,7 +152,7 @@ namespace QlyDiem
                 dgvSV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvSV.Columns[0].HeaderText = "Mã Giảng Viên";
                 dgvSV.Columns[1].HeaderText = "Tên Giảng Viên";
-                dgvSV.Columns[2].HeaderText = "Mã Khoa";
+                dgvSV.Columns[2].HeaderText = "Tên Khoa";
                 dgvSV.Columns[3].HeaderText = "Ngày Sinh";
                 dgvSV.Columns[4].HeaderText = "Quê Quán";
                 dgvSV.Columns[5].HeaderText = "Giới Tính";
@@ -162,37 +173,53 @@ namespace QlyDiem
             string trinhDo = tbTrinhDo.Text;
             string queQuan = tbQueQuan.Text;
 
-            string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
-            string maKhoa = null;
-
-            using (SqlConnection con = Connection.getSqlConnection())
+            if (string.IsNullOrEmpty(maGV) || string.IsNullOrEmpty(tenGV) || string.IsNullOrEmpty(ngaySinh) || string.IsNullOrEmpty(tenKhoa) || string.IsNullOrEmpty(trinhDo) || string.IsNullOrEmpty(queQuan))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.Parameters.AddWithValue("@TenKhoa", tenKhoa);
-                    con.Open();
-                    object oj = cmd.ExecuteScalar();
-
-                    if (oj != null)
-                    {
-                        maKhoa = oj.ToString();
-                    }
-                }
-            }
-
-            string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
-
-            GiangVien giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
-
-            if (gVModify.updateGV(giangVien))
-            {
-                dgvSV.DataSource = gVModify.getAllGiangVien();
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo");
             }
             else
             {
-                MessageBox.Show("Lỗi: Không sửa được giảng viên.", "Lỗi");
+
+                string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
+                string maKhoa = null;
+
+                using (SqlConnection con = Connection.getSqlConnection())
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@TenKhoa", tenKhoa);
+                        con.Open();
+                        object oj = cmd.ExecuteScalar();
+
+                        if (oj != null)
+                        {
+                            maKhoa = oj.ToString();
+                        }
+                    }
+                }
+
+                if (maKhoa != null)
+                {
+                    string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
+
+                    GiangVien giangVien = new GiangVien(maGV, tenGV, maKhoa, ngaySinh, queQuan, gioiTinh, trinhDo);
+
+                    if (gVModify.updateGV(giangVien))
+                    {
+                        dgvSV.DataSource = gVModify.getAllGiangVien();
+                        MessageBox.Show("Sửa thành công.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi: Không sửa được giảng viên.", "Lỗi");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy Mã Khoa tương ứng với Tên Khoa đã chọn.", "Lỗi");
+                }
             }
-        }
+        }            
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string gv = tbMaGV.Text;
@@ -243,6 +270,17 @@ namespace QlyDiem
             tbHoTen.Text = Convert.ToString(row.Cells["TenGV"].Value);
             tbNgaysinh.Text = Convert.ToString(row.Cells["NgaySinh"].Value);
             tbQueQuan.Text = Convert.ToString(row.Cells["QueQuan"].Value);
+            cbbMaKhoa.Text = Convert.ToString(row.Cells["TenKhoa"].Value);
+            String gt;
+            gt = dgvSV.CurrentRow.Cells["GioiTinh"].Value.ToString();
+            if (gt == "Nam")
+            {
+                rdoNam.Checked = true;
+            }
+            if (gt == "Nữ")
+            {
+                rdoNu.Checked = true;
+            }
             tbTrinhDo.Text = Convert.ToString(row.Cells["TrinhDo"].Value);
         }
 
