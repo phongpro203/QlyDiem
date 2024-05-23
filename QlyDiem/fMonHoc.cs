@@ -29,7 +29,6 @@ namespace QlyDiem
         }
         private void fMonHoc_Load(object sender, EventArgs e)
         {
-            dgvMH.ReadOnly = true;
             mHModify = new MHModify();
             try
             {
@@ -91,7 +90,7 @@ namespace QlyDiem
 
         private void btnTatCa_Click(object sender, EventArgs e)
         {
-            tbTimKiemTheoMa.Clear();
+            tbTimKiemTheoMa.Text = "Nhập mã môn cần tìm";
             fMonHoc_Load(sender, e);
         }
 
@@ -139,6 +138,11 @@ namespace QlyDiem
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tl == DialogResult.Cancel || tl == DialogResult.No)
+            {
+                return;
+            }
             string maMon = tbMaMon.Text;
             if (mHModify.delete(maMon))
             {
@@ -188,6 +192,20 @@ namespace QlyDiem
         private void fMonHoc_Activated(object sender, EventArgs e)
         {
             fMonHoc_Load(sender, e);
+        }
+
+        private void tbTimKiemTheoMa_Click(object sender, EventArgs e)
+        {
+            tbTimKiemTheoMa.Clear();
+        }
+
+        private void dgvMH_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgvMH.Rows[e.RowIndex];
+            tbMaMon.Text = Convert.ToString(row.Cells["MaMon"].Value);
+            tbTenMon.Text = Convert.ToString(row.Cells["TenMon"].Value);
+            tbSoTC.Text = Convert.ToString(row.Cells["SoTinChi"].Value);
         }
     }
 }

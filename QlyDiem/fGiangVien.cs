@@ -14,7 +14,6 @@ namespace QlyDiem
     public partial class fGiangVien : Form
     {
         GVModify gVModify;
-        GiangVien giangVien;
         public fGiangVien()
         {
             InitializeComponent();
@@ -151,6 +150,7 @@ namespace QlyDiem
         }
         private void btnTatCa_Click(object sender, EventArgs e)
         {
+            tbTimKiemTheoMa.Text = "Nhập mã giảng viên";
             dgvSV.ReadOnly = true;
             gVModify = new GVModify();
             try
@@ -229,6 +229,11 @@ namespace QlyDiem
         }            
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tl == DialogResult.Cancel || tl == DialogResult.No)
+            {
+                return;
+            }
             string gv = tbMaGV.Text;
             if (gVModify.deleteGV(gv))
             {
@@ -278,7 +283,7 @@ namespace QlyDiem
             tbNgaysinh.Text = Convert.ToString(row.Cells["NgaySinh"].Value);
             tbQueQuan.Text = Convert.ToString(row.Cells["QueQuan"].Value);
             cbbMaKhoa.Text = Convert.ToString(row.Cells["TenKhoa"].Value);
-            String gt;
+            string gt;
             gt = dgvSV.CurrentRow.Cells["GioiTinh"].Value.ToString();
             if (gt == "Nam")
             {
@@ -294,6 +299,11 @@ namespace QlyDiem
         private void fGiangVien_Activated(object sender, EventArgs e)
         {
             fGiangVien_Load(sender, e);
+        }
+
+        private void tbTimKiemTheoMa_Click(object sender, EventArgs e)
+        {
+            tbTimKiemTheoMa.Clear();
         }
     }
 }

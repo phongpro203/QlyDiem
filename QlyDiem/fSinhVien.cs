@@ -243,6 +243,11 @@ namespace QlyDiem
 
         private void btnXoa_Click(object sender, EventArgs e)                                   //Nút xóa
         {
+            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tl == DialogResult.Cancel || tl == DialogResult.No)
+            {
+                return;
+            }
             string maSV = tbMaSV.Text;
 
             if (string.IsNullOrWhiteSpace(maSV))
@@ -334,6 +339,27 @@ namespace QlyDiem
         private void tbTimKiemTheoMa_Click_1(object sender, EventArgs e)
         {
             tbTimKiemTheoMa.Clear();
+        }
+
+        private void dgvSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgvSV.Rows[e.RowIndex];
+            tbMaSV.Text = Convert.ToString(row.Cells["MaSV"].Value);
+            tbHoTen.Text = Convert.ToString(row.Cells["TenSV"].Value);
+            cbbLop.Text = Convert.ToString(row.Cells["TenLop"].Value);
+            tbNgaysinh.Text = Convert.ToString(row.Cells["NgaySinh"].Value);
+            tbQueQuan.Text = Convert.ToString(row.Cells["QueQuan"].Value);
+            string gt;
+            gt = dgvSV.CurrentRow.Cells["GioiTinh"].Value.ToString();
+            if (gt == "Nam")
+            {
+                rdoNam.Checked = true;
+            }
+            if (gt == "Nữ")
+            {
+                rdoNu.Checked = true;
+            }
         }
     }
 }

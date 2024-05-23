@@ -143,6 +143,11 @@ namespace QlyDiem
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tl == DialogResult.Cancel || tl == DialogResult.No)
+            {
+                return;
+            }
             string ml = tbMaLop.Text;
             if (lopModify.delete(ml))
             {
@@ -219,7 +224,20 @@ namespace QlyDiem
 
         private void btnTatCa_Click(object sender, EventArgs e)
         {
-            fLop_Load(sender, e);
+            try
+            {
+
+                dgvLop.DataSource = lopModify.getAllopHoc();
+                dgvLop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvLop.Columns[0].HeaderText = "Mã lớp";
+                dgvLop.Columns[1].HeaderText = "Tên lớp";
+                dgvLop.Columns[2].HeaderText = "Khoa";
+                dgvLop.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Lỗi");
+            }
             tbTimKiemTheoTen.Text = "Nhập mã lớp";
         }
 
@@ -239,6 +257,11 @@ namespace QlyDiem
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Lỗi");
             }
+        }
+
+        private void tbTimKiemTheoTen_Click_1(object sender, EventArgs e)
+        {
+            tbTimKiemTheoTen.Clear();
         }
     }
 }

@@ -52,9 +52,9 @@
             this.tbMaLop = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbTimKiemTheoTen = new System.Windows.Forms.TextBox();
             this.btnTatCa = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.tbTimKiemTheoTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).BeginInit();
             this.panel2.SuspendLayout();
@@ -70,6 +70,7 @@
             // 
             // dgvLop
             // 
+            this.dgvLop.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLop.Location = new System.Drawing.Point(417, 175);
             this.dgvLop.Margin = new System.Windows.Forms.Padding(4);
@@ -339,14 +340,26 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.tbTimKiemTheoTen);
             this.panel1.Controls.Add(this.btnTatCa);
             this.panel1.Controls.Add(this.btnTimKiem);
-            this.panel1.Controls.Add(this.tbTimKiemTheoTen);
             this.panel1.Location = new System.Drawing.Point(417, 80);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 617);
             this.panel1.TabIndex = 8;
+            // 
+            // tbTimKiemTheoTen
+            // 
+            this.tbTimKiemTheoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimKiemTheoTen.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbTimKiemTheoTen.Location = new System.Drawing.Point(15, 30);
+            this.tbTimKiemTheoTen.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTimKiemTheoTen.Name = "tbTimKiemTheoTen";
+            this.tbTimKiemTheoTen.Size = new System.Drawing.Size(360, 26);
+            this.tbTimKiemTheoTen.TabIndex = 12;
+            this.tbTimKiemTheoTen.Text = "Nhập mã lớp";
+            this.tbTimKiemTheoTen.Click += new System.EventHandler(this.tbTimKiemTheoTen_Click_1);
             // 
             // btnTatCa
             // 
@@ -376,18 +389,6 @@
             this.btnTimKiem.Text = "Tìm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // tbTimKiemTheoTen
-            // 
-            this.tbTimKiemTheoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimKiemTheoTen.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbTimKiemTheoTen.Location = new System.Drawing.Point(19, 28);
-            this.tbTimKiemTheoTen.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTimKiemTheoTen.Name = "tbTimKiemTheoTen";
-            this.tbTimKiemTheoTen.Size = new System.Drawing.Size(360, 26);
-            this.tbTimKiemTheoTen.TabIndex = 0;
-            this.tbTimKiemTheoTen.Text = "Nhập mã lớp";
-            this.tbTimKiemTheoTen.Click += new System.EventHandler(this.tbTimKiemTheoTen_Click);
             // 
             // label1
             // 
@@ -464,7 +465,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnTatCa;
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.TextBox tbTimKiemTheoTen;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbTimKiemTheoTen;
     }
 }

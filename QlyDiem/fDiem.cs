@@ -292,6 +292,11 @@ namespace QlyDiem
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tl == DialogResult.Cancel || tl == DialogResult.No)
+            {
+                return;
+            }
             string maSV = tbMaSV.Text;
             string maMon = tbMaMon.Text;
 

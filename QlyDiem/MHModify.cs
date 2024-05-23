@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QlyDiem
 {
@@ -39,6 +40,14 @@ namespace QlyDiem
                 sqlCommand.ExecuteNonQuery();//thuc thi lenh truy van
                     
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2601 || ex.Number == 2627) // Mã lỗi cho "Nhập trùng khóa"
+                {
+                    MessageBox.Show("Mã môn đã tồn tại trong cơ sở dữ liệu.");
+                    return false;
+                }
+            }
             catch
             {
                 return false;
@@ -63,6 +72,7 @@ namespace QlyDiem
                 sqlCommand.ExecuteNonQuery();//thuc thi lenh truy van
 
             }
+            
             catch
             {
                 return false;

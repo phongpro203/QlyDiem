@@ -52,9 +52,9 @@
             this.tbMaMon = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             this.btnTatCa = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMH)).BeginInit();
             this.panel2.SuspendLayout();
@@ -70,6 +70,7 @@
             // 
             // dgvMH
             // 
+            this.dgvMH.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvMH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMH.Location = new System.Drawing.Point(431, 183);
             this.dgvMH.Margin = new System.Windows.Forms.Padding(4);
@@ -77,6 +78,7 @@
             this.dgvMH.RowHeadersWidth = 51;
             this.dgvMH.Size = new System.Drawing.Size(754, 516);
             this.dgvMH.TabIndex = 11;
+            this.dgvMH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMH_CellContentClick);
             this.dgvMH.SelectionChanged += new System.EventHandler(this.dgvMH_SelectionChanged);
             // 
             // label6
@@ -338,14 +340,26 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.tbTimKiemTheoMa);
             this.panel1.Controls.Add(this.btnTatCa);
             this.panel1.Controls.Add(this.btnTimKiem);
-            this.panel1.Controls.Add(this.tbTimKiemTheoMa);
             this.panel1.Location = new System.Drawing.Point(431, 87);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(754, 71);
             this.panel1.TabIndex = 8;
+            // 
+            // tbTimKiemTheoMa
+            // 
+            this.tbTimKiemTheoMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimKiemTheoMa.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.tbTimKiemTheoMa.Location = new System.Drawing.Point(29, 28);
+            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTimKiemTheoMa.Name = "tbTimKiemTheoMa";
+            this.tbTimKiemTheoMa.Size = new System.Drawing.Size(424, 26);
+            this.tbTimKiemTheoMa.TabIndex = 7;
+            this.tbTimKiemTheoMa.Text = "Nhập mã môn cần tìm";
+            this.tbTimKiemTheoMa.Click += new System.EventHandler(this.tbTimKiemTheoMa_Click);
             // 
             // btnTatCa
             // 
@@ -375,18 +389,6 @@
             this.btnTimKiem.Text = "Tìm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // tbTimKiemTheoMa
-            // 
-            this.tbTimKiemTheoMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimKiemTheoMa.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tbTimKiemTheoMa.Location = new System.Drawing.Point(91, 28);
-            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTimKiemTheoMa.Name = "tbTimKiemTheoMa";
-            this.tbTimKiemTheoMa.Size = new System.Drawing.Size(272, 26);
-            this.tbTimKiemTheoMa.TabIndex = 0;
-            this.tbTimKiemTheoMa.Text = "Nhập mã môn cần tìm";
-            this.tbTimKiemTheoMa.Click += new System.EventHandler(this.tbTimKiemTheoTen_Click);
             // 
             // label1
             // 
@@ -463,7 +465,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnTatCa;
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.TextBox tbTimKiemTheoMa;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbTimKiemTheoMa;
     }
 }
