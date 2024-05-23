@@ -275,8 +275,12 @@ namespace QlyDiem
 
         private void btnTatCa_Click(object sender, EventArgs e)                                 //Nút tất cả
         {
-            tbTimKiemTheoMa.Clear();
+            tbTimKiemTheoMa.Text = "Nhập mã sinh viên";
+            tbMaSV.Clear();
+            tbHoTen.Clear();
+            tbQueQuan.Clear();
             fSinhVien_Load(sender, e);
+            
         }
 
         private void label20_Click(object sender, EventArgs e)
@@ -317,6 +321,12 @@ namespace QlyDiem
         private void fSinhVien_Activated(object sender, EventArgs e)
         {
             fSinhVien_Load(sender, e);
+        }
+
+
+        private void tbTimKiemTheoMa_Click_1(object sender, EventArgs e)
+        {
+            tbTimKiemTheoMa.Clear();
         }
     }
 }

@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="Diem.cs" />
+    <Compile Include="DiemModify.cs" />
     <Compile Include="fDiem.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -61,9 +61,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTatCa = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.tbTimKiemTheoMa = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.panel2.SuspendLayout();
             this.btnRefresh.SuspendLayout();
@@ -427,9 +427,9 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.tbTimKiemTheoMa);
             this.panel1.Controls.Add(this.btnTatCa);
             this.panel1.Controls.Add(this.btnTimKiem);
-            this.panel1.Controls.Add(this.tbTimKiemTheoMa);
             this.panel1.Location = new System.Drawing.Point(48, 88);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -465,17 +465,6 @@
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // tbTimKiemTheoMa
-            // 
-            this.tbTimKiemTheoMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimKiemTheoMa.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbTimKiemTheoMa.Location = new System.Drawing.Point(52, 23);
-            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTimKiemTheoMa.Name = "tbTimKiemTheoMa";
-            this.tbTimKiemTheoMa.Size = new System.Drawing.Size(532, 26);
-            this.tbTimKiemTheoMa.TabIndex = 0;
-            this.tbTimKiemTheoMa.Text = "Nhập mã sv";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -487,6 +476,18 @@
             this.label1.Size = new System.Drawing.Size(356, 46);
             this.label1.TabIndex = 18;
             this.label1.Text = "Quản lý Sinh Viên";
+            // 
+            // tbTimKiemTheoMa
+            // 
+            this.tbTimKiemTheoMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimKiemTheoMa.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbTimKiemTheoMa.Location = new System.Drawing.Point(52, 21);
+            this.tbTimKiemTheoMa.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTimKiemTheoMa.Name = "tbTimKiemTheoMa";
+            this.tbTimKiemTheoMa.Size = new System.Drawing.Size(540, 26);
+            this.tbTimKiemTheoMa.TabIndex = 19;
+            this.tbTimKiemTheoMa.Text = "Nhập mã sinh viên";
+            this.tbTimKiemTheoMa.Click += new System.EventHandler(this.tbTimKiemTheoMa_Click_1);
             // 
             // fSinhVien
             // 
@@ -560,9 +561,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnTatCa;
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.TextBox tbTimKiemTheoMa;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DateTimePicker tbNgaysinh;
+        private System.Windows.Forms.TextBox tbTimKiemTheoMa;
     }
 }
