@@ -76,7 +76,18 @@ namespace QlyDiem
             string khoa = cbbKhoa.Text;
             string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
             string maKhoa = null;
+            if (maLop == "" || tenLop == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+            DataTable result = lopModify.search(maLop);
 
+            if (result.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để sửa ", "Thông báo");
+                return;
+            }
             using (SqlConnection con = Connection.getSqlConnection())
             {
                 using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -96,6 +107,8 @@ namespace QlyDiem
             lop = new Lop(maLop, tenLop, maKhoa);
             if (lopModify.update(lop))
             {
+                MessageBox.Show("Sửa thành công.");
+
                 // sửa thành công, cập nhật DataGridView
                 dgvLop.DataSource = lopModify.getAllopHoc();
             }
@@ -112,7 +125,11 @@ namespace QlyDiem
             string khoa = cbbKhoa.Text;
             string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
             string maKhoa = null;
-
+            if (maLop == "" || tenLop == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
             using (SqlConnection con = Connection.getSqlConnection())
             {
                 using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -132,8 +149,10 @@ namespace QlyDiem
             lop = new Lop(maLop, tenLop, maKhoa);
             if (lopModify.insertlop(lop))
             {
-                // sửa thành công, cập nhật DataGridView
+                // thêm thành công, cập nhật DataGridView
                 dgvLop.DataSource = lopModify.getAllopHoc();
+                MessageBox.Show("Thêm thành công");
+
             }
             else
             {
@@ -143,15 +162,23 @@ namespace QlyDiem
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            string ml = tbMaLop.Text;
+            if (ml == "")
+            {
+                MessageBox.Show("Bạn chưa nhập mã lớp!");
+                return;
+            }
             DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (tl == DialogResult.Cancel || tl == DialogResult.No)
             {
                 return;
             }
-            string ml = tbMaLop.Text;
+            
             if (lopModify.delete(ml))
             {
                 dgvLop.DataSource = lopModify.getAllopHoc();
+                MessageBox.Show("Xóa thành công");
+                btnRefresh_Click(sender, e);
             }
             else
             {

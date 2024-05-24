@@ -77,7 +77,7 @@ namespace QlyDiem
             }
             catch
             {
-                MessageBox.Show("Có lỗi sảy ra vui lòng kiểm tra lại!");
+                MessageBox.Show("Có lỗi xảy ra vui lòng kiểm tra lại!");
             }
             finally
             {

@@ -267,6 +267,8 @@ namespace QlyDiem
                 if (diemModify.insertDiem(diem))
                 {
                     dgvDiem.DataSource = diemModify.getAllDiem();
+                    MessageBox.Show("Thêm thành công");
+
                 }
                 else
                 {
@@ -309,6 +311,8 @@ namespace QlyDiem
             if (diemModify.delete(maSV, maMon))
             {
                 dgvDiem.DataSource = diemModify.getAllDiem(); // Refresh the data grid view
+                MessageBox.Show("Xóa thành công");
+                btnRefresh_Click(sender, e);
             }
             else
             {
@@ -378,6 +382,8 @@ namespace QlyDiem
                 if (diemModify.update(diem))
                 {
                     dgvDiem.DataSource = diemModify.getAllDiem();
+                    MessageBox.Show("Sửa thành công.");
+
                 }
                 else
                 {

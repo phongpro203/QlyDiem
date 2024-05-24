@@ -60,6 +60,11 @@ namespace QlyDiem
             string maMon = tbMaMon.Text;
             string tenMon = tbTenMon.Text;
             int soTinChi;
+            if (maMon == "" || tenMon == "" || tbSoTC.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
             try
             {
                 soTinChi = int.Parse(tbSoTC.Text);
@@ -73,6 +78,8 @@ namespace QlyDiem
             if (mHModify.insert(MonHoc))
             {
                 dgvMH.DataSource = mHModify.getAllMonHoc();
+                MessageBox.Show("Thêm thành công");
+
             }
             else
             {
@@ -130,6 +137,11 @@ namespace QlyDiem
             string maMon = tbMaMon.Text;
             string tenMon = tbTenMon.Text;
             int soTinChi;
+            if (maMon == "" || tenMon == "" || tbSoTC.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
             try
             {
                 soTinChi = int.Parse(tbSoTC.Text);
@@ -140,8 +152,16 @@ namespace QlyDiem
                 MessageBox.Show("Bạn phải nhập số nguyên");
                 return;
             }
+            DataTable result = mHModify.search(maMon);
+
+            if (result.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để sửa ", "Thông báo");
+                return;
+            }
             if (mHModify.update(MonHoc))
             {
+                MessageBox.Show("Sửa thành công.");
                 dgvMH.DataSource = mHModify.getAllMonHoc();
             }
             else
@@ -151,15 +171,22 @@ namespace QlyDiem
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            string maMon = tbMaMon.Text;
+            if (maMon == "")
+            {
+                MessageBox.Show("Bạn chưa nhập mã môn!");
+                return;
+            }
             DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (tl == DialogResult.Cancel || tl == DialogResult.No)
             {
                 return;
             }
-            string maMon = tbMaMon.Text;
             if (mHModify.delete(maMon))
             {
                 dgvMH.DataSource = mHModify.getAllMonHoc();
+                MessageBox.Show("Xóa thành công");
+                btnRefresh_Click(sender, e);
             }
             else
             {

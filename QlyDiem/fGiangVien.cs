@@ -199,7 +199,13 @@ namespace QlyDiem
             }
             else
             {
+                DataTable result = gVModify.searchGV(maGV);
 
+                if (result.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu để sửa ", "Thông báo");
+                    return;
+                }
                 string sql = "SELECT MaKhoa FROM Khoa WHERE TenKhoa = @TenKhoa";
                 string maKhoa = null;
 
@@ -251,6 +257,9 @@ namespace QlyDiem
             if (gVModify.deleteGV(gv))
             {
                 dgvSV.DataSource = gVModify.getAllGiangVien();
+                MessageBox.Show("Xóa thành công");
+                btnRefresh_Click(sender, e);
+
             }
             else
             {

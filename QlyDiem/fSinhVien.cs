@@ -172,6 +172,8 @@ namespace QlyDiem
                 {
                     // Thêm thành công, cập nhật DataGridView
                     dgvSV.DataSource = sVModify.getAllSinhvien();
+                    MessageBox.Show("Thêm thành công");
+
                 }
                 else
                 {
@@ -226,6 +228,7 @@ namespace QlyDiem
                 }
                 else if (sVModify.update(sinhVien))
                 {
+                    MessageBox.Show("Sửa thành công.");
                     // sửa thành công, cập nhật DataGridView
                     dgvSV.DataSource = sVModify.getAllSinhvien();
                 }
@@ -266,6 +269,8 @@ namespace QlyDiem
                 }else if (sVModify.delete(maSV))
                 {
                     dgvSV.DataSource = sVModify.getAllSinhvien();
+                    MessageBox.Show("Xóa thành công");
+                    btnRefresh_Click(sender, e);
                 }
                 else
                 {

@@ -65,14 +65,14 @@ namespace QlyDiem
         }
         public bool updateGV(GiangVien gv)
         {
-            using (var connection = Connection.getSqlConnection())
+            using (connection = Connection.getSqlConnection())
             {
                 string sql = "update GiangVien set TenGV = @TenGV, MaKhoa = @MaKhoa, NgaySinh = @NgaySinh, QueQuan = @QueQuan, GioiTinh = @GioiTinh, TrinhDo = @TrinhDo where MaGV = @MaGV";
 
                 try
                 {
                     connection.Open();
-                    using (var sqlCommand = new SqlCommand(sql, connection))
+                    using (sqlCommand = new SqlCommand(sql, connection))
                     {
                         sqlCommand.Parameters.Add("@MaGV", SqlDbType.NVarChar).Value = gv.MaGV;
                         sqlCommand.Parameters.Add("@TenGV", SqlDbType.NVarChar).Value = gv.TenGV;
