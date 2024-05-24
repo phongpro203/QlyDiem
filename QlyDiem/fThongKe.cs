@@ -307,8 +307,8 @@ namespace QlyDiem
             }
 
             // Đóng Workbook và ứng dụng Excel
-            oBook.Close();
-            oExcel.Quit();
+            //oBook.Close();
+            //oExcel.Quit();
 
             // Giải phóng tài nguyên
             System.Runtime.InteropServices.Marshal.ReleaseComObject(oBook);
