@@ -236,17 +236,18 @@ namespace QlyDiem
                 return;
             }
 
-            if (!float.TryParse(tbDT.Text, out diemThi))
+            if (!float.TryParse(tbDT.Text, out diemThi) || diemThi < 0 || diemThi > 10)
             {
-                MessageBox.Show("Điểm thi phải là số thực", "Lỗi Định Dạng");
+                MessageBox.Show("Điểm thi phải là số thực từ 0 đến 10", "Lỗi Định Dạng");
                 return;
             }
 
-            if (!float.TryParse(tbDTX.Text, out diemTK))
+            if (!float.TryParse(tbDTX.Text, out diemTK) || diemTK < 0 || diemTK > 10)
             {
-                MessageBox.Show("Điểm thường xuyên phải là số thực", "Lỗi Định Dạng");
+                MessageBox.Show("Điểm thường xuyên phải là số thực từ 0 đến 10", "Lỗi Định Dạng");
                 return;
             }
+
 
             if (!diemModify.SVTonTai(maSV))
             {
@@ -310,13 +311,13 @@ namespace QlyDiem
 
             if (diemModify.delete(maSV, maMon))
             {
-                dgvDiem.DataSource = diemModify.getAllDiem(); // Refresh the data grid view
+                dgvDiem.DataSource = diemModify.getAllDiem(); // làm mới data grid view
                 MessageBox.Show("Xóa thành công");
                 btnRefresh_Click(sender, e);
             }
             else
             {
-                MessageBox.Show("Lỗi: Không thể xóa bản ghi. Hãy kiểm tra Mã Sinh Viên và Mã Môn.", "Lỗi");
+                MessageBox.Show("Không thể xóa. Hãy kiểm tra Mã Sinh Viên và Mã Môn.", "Lỗi");
             }
         }
 
@@ -351,17 +352,18 @@ namespace QlyDiem
                 return;
             }
 
-            if (!float.TryParse(tbDT.Text, out diemThi))
+            if (!float.TryParse(tbDT.Text, out diemThi) || diemThi < 0 || diemThi > 10)
             {
-                MessageBox.Show("Điểm thi phải là số thực", "Lỗi Định Dạng");
+                MessageBox.Show("Điểm thi phải là số thực từ 0 đến 10", "Lỗi Định Dạng");
                 return;
             }
 
-            if (!float.TryParse(tbDTX.Text, out diemTK))
+            if (!float.TryParse(tbDTX.Text, out diemTK) || diemTK < 0 || diemTK > 10)
             {
-                MessageBox.Show("Điểm thường xuyên phải là số thực", "Lỗi Định Dạng");
+                MessageBox.Show("Điểm thường xuyên phải là số thực từ 0 đến 10", "Lỗi Định Dạng");
                 return;
             }
+
 
             if (!diemModify.SVTonTai(maSV))
             {
