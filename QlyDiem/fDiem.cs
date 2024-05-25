@@ -27,7 +27,7 @@ namespace QlyDiem
                 System.Threading.Thread.Sleep(2000); // Giả lập tải dữ liệu
             });
         }
-        private void fDiem_Load(object sender, EventArgs e)
+        private void fDiem_Load(object sender, EventArgs e)                                     
         {
             dgvDiem.ReadOnly = true;
             diemModify = new DiemModify();
@@ -122,14 +122,16 @@ namespace QlyDiem
 
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)                   //Nút làm mới
         {
+            tbTimKiemTheoMa.Text = "Nhập mã sinh viên";
             tbHoTen.Clear();
             tbMaMon.Clear();
             tbDT.Clear();
             tbDTX.Clear();
             tbMaSV.Clear();
             tbTenMon.Clear();
+            tbMaSV.Focus();
         }
 
         private void label20_Click(object sender, EventArgs e)
@@ -146,9 +148,9 @@ namespace QlyDiem
         {
             string maSV = tbTimKiemTheoMa.Text;
 
-            if (string.IsNullOrWhiteSpace(maSV))
+            if (maSV == "Nhập mã sinh viên" || maSV == "")
             {
-                MessageBox.Show("Vui lòng nhập Mã Sinh Viên để tìm kiếm", "Thông báo");
+                MessageBox.Show("Vui lòng nhập mã sinh viên", "Thông báo");
                 return;
             }
             try
@@ -188,51 +190,20 @@ namespace QlyDiem
             tbTenMon.Clear();
             fDiem_Load(sender, e);
         }
-        private bool KiemTraLoiNhapLieu()
-        {
-            if (string.IsNullOrWhiteSpace(tbMaSV.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Mã Sinh Viên", "Lỗi");
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(tbMaMon.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Mã Môn", "Lỗi");
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(tbDT.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Điểm Thi", "Lỗi");
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(tbDTX.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Điểm Thường Xuyên", "Lỗi");
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(cbbHK.Text))
-            {
-                MessageBox.Show("Vui lòng chọn Học Kỳ", "Lỗi");
-                return true;
-            }
-            return false;
-        }
+
         private void btnThem_Click(object sender, EventArgs e)                      //Nút Thêm
         {
             string maSV = tbMaSV.Text;
             string maMon = tbMaMon.Text;
-            int hocKy;
+            string hocKy = cbbHK.Text;
             float diemThi;
             float diemTK;
-
-            if (KiemTraLoiNhapLieu())
+            // check nhập liệu
+            if (string.IsNullOrEmpty(maSV) || string.IsNullOrEmpty(maMon) || 
+                string.IsNullOrEmpty(hocKy)|| string.IsNullOrEmpty(tbDT.Text) || 
+                string.IsNullOrEmpty(tbDTX.Text))
             {
-                return;
-            }
-
-            if (!int.TryParse(cbbHK.Text, out hocKy))
-            {
-                MessageBox.Show("Học kỳ phải là số nguyên", "Lỗi Định Dạng");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo");
                 return;
             }
 
@@ -247,7 +218,7 @@ namespace QlyDiem
                 MessageBox.Show("Điểm thường xuyên phải là số thực từ 0 đến 10", "Lỗi Định Dạng");
                 return;
             }
-
+  
 
             if (!diemModify.SVTonTai(maSV))
             {
@@ -268,7 +239,7 @@ namespace QlyDiem
                 if (diemModify.insertDiem(diem))
                 {
                     dgvDiem.DataSource = diemModify.getAllDiem();
-                    MessageBox.Show("Thêm thành công");
+                    MessageBox.Show("Thêm thành công", "Thông báo");
 
                 }
                 else
@@ -293,13 +264,8 @@ namespace QlyDiem
             btnThem_Click(sender, e);
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)                               //Nút Xoá
         {
-            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (tl == DialogResult.Cancel || tl == DialogResult.No)
-            {
-                return;
-            }
             string maSV = tbMaSV.Text;
             string maMon = tbMaMon.Text;
 
@@ -309,19 +275,22 @@ namespace QlyDiem
                 return;
             }
 
+            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tl == DialogResult.Cancel || tl == DialogResult.No)
+            {
+                return;
+            }
+
             if (diemModify.delete(maSV, maMon))
             {
                 dgvDiem.DataSource = diemModify.getAllDiem(); // làm mới data grid view
-                MessageBox.Show("Xóa thành công");
-                btnRefresh_Click(sender, e);
+                MessageBox.Show("Xóa thành công", "Thông báo");
             }
             else
             {
                 MessageBox.Show("Không thể xóa. Hãy kiểm tra Mã Sinh Viên và Mã Môn.", "Lỗi");
             }
         }
-
-
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
@@ -337,18 +306,15 @@ namespace QlyDiem
         {
             string maSV = tbMaSV.Text;
             string maMon = tbMaMon.Text;
-            int hocKy;
+            string hocKy = cbbHK.Text;
             float diemThi;
             float diemTK;
-
-            if (KiemTraLoiNhapLieu())
+            // check nhập liệu
+            if (string.IsNullOrEmpty(maSV) || string.IsNullOrEmpty(maMon) || 
+                string.IsNullOrEmpty(hocKy) || string.IsNullOrEmpty(tbDT.Text) || 
+                string.IsNullOrEmpty(tbDTX.Text))
             {
-                return;
-            }
-
-            if (!int.TryParse(cbbHK.Text, out hocKy))
-            {
-                MessageBox.Show("Học kỳ phải là số nguyên", "Lỗi Định Dạng");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo");
                 return;
             }
 
@@ -367,13 +333,13 @@ namespace QlyDiem
 
             if (!diemModify.SVTonTai(maSV))
             {
-                MessageBox.Show("Sinh viên không tồn tại", "Lỗi");
+                MessageBox.Show("Không tìm thấy sinh viên", "Lỗi");
                 return;
             }
 
             if (!diemModify.MonHocTonTai(maMon))
             {
-                MessageBox.Show("Môn học không tồn tại", "Lỗi");
+                MessageBox.Show("Không tìm thấy môn học", "Lỗi");
                 return;
             }
             try
@@ -383,7 +349,7 @@ namespace QlyDiem
                 if (diemModify.update(diem))
                 {
                     dgvDiem.DataSource = diemModify.getAllDiem();
-                    MessageBox.Show("Sửa thành công.");
+                    MessageBox.Show("Sửa thành công.", "Thông báo");
 
                 }
                 else
@@ -408,7 +374,7 @@ namespace QlyDiem
             btnSua_Click(sender, e);
         }
 
-        private void dgvDiem_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDiem_CellContentClick(object sender, DataGridViewCellEventArgs e)           //cell click
         {
             DataGridViewRow row = new DataGridViewRow();
             row = dgvDiem.Rows[e.RowIndex];

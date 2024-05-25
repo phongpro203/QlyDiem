@@ -10,11 +10,11 @@ namespace QlyDiem
     {
         private string maSV;
         private string maMon;
-        private int hocKy;
+        private string hocKy;
         private float diemThi;
         private float diemTX;
 
-        public Diem(string maSV, string maMon, int hocKy, float diemThi, float diemTX)
+        public Diem(string maSV, string maMon, string hocKy, float diemThi, float diemTX)
         {
             this.maSV = maSV;
             this.maMon = maMon;
@@ -25,7 +25,7 @@ namespace QlyDiem
 
         public string MaSV { get => maSV; set => maSV = value; }
         public string MaMon { get => maMon; set => maMon = value; }
-        public int HocKy { get => hocKy; set => hocKy = value; }
+        public string HocKy { get => hocKy; set => hocKy = value; }
         public float DiemThi { get => diemThi; set => diemThi = value; }
         public float DiemTX { get => diemTX; set => diemTX = value; }
     }

@@ -70,7 +70,7 @@ namespace QlyDiem
             string maGV = tbTimKiemTheoMa.Text;
             if (maGV == macdinh || maGV == "")
             {
-                MessageBox.Show("Vui lòng nhập mã giảng viên");
+                MessageBox.Show("Vui lòng nhập mã giảng viên", "Thông báo");
                 return;
             }
             try
@@ -140,7 +140,7 @@ namespace QlyDiem
                     if (gVModify.insertGV(giangVien))
                     {
                         dgvSV.DataSource = gVModify.getAllGiangVien();
-                        MessageBox.Show("Thêm thành công");
+                        MessageBox.Show("Thêm thành công", "Thông báo");
                     }
                     else
                     {
@@ -155,11 +155,13 @@ namespace QlyDiem
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            tbTimKiemTheoMa.Clear();
+
+            tbTimKiemTheoMa.Text = "Nhập mã giảng viên";
             tbMaGV.Clear();
             tbHoTen.Clear();
             tbTrinhDo.Clear();
             tbQueQuan.Clear();
+            tbMaGV.Focus();
         }
         private void btnTatCa_Click(object sender, EventArgs e)
         {
@@ -233,7 +235,7 @@ namespace QlyDiem
                     if (gVModify.updateGV(giangVien))
                     {
                         dgvSV.DataSource = gVModify.getAllGiangVien();
-                        MessageBox.Show("Sửa thành công.");
+                        MessageBox.Show("Sửa thành công.", "Thông báo");
                     }
                     else
                     {
@@ -248,12 +250,19 @@ namespace QlyDiem
         }            
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            string gv = tbMaGV.Text;
+            
+            if (string.IsNullOrWhiteSpace(gv))
+            {
+                MessageBox.Show("Vui lòng nhập mã giảng viên để xoá", "Thông báo");
+                return;
+            }
             DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (tl == DialogResult.Cancel || tl == DialogResult.No)
             {
                 return;
             }
-            string gv = tbMaGV.Text;
+
             DataTable result = gVModify.searchGV(gv);
 
             if (result.Rows.Count == 0)
@@ -264,7 +273,7 @@ namespace QlyDiem
             if (gVModify.deleteGV(gv))
             {
                 dgvSV.DataSource = gVModify.getAllGiangVien();
-                MessageBox.Show("Xóa thành công");
+                MessageBox.Show("Xóa thành công", "Thông báo");
                 btnRefresh_Click(sender, e);
 
             }

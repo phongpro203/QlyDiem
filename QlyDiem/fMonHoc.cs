@@ -62,7 +62,7 @@ namespace QlyDiem
             int soTinChi;
             if (maMon == "" || tenMon == "" || tbSoTC.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
                 return;
             }
             try
@@ -72,13 +72,13 @@ namespace QlyDiem
             }
             catch (FormatException)
             {
-                MessageBox.Show("Bạn phải nhập số nguyên");
+                MessageBox.Show("Bạn phải nhập số nguyên", "Thông báo");
                 return;
             }
             if (mHModify.insert(MonHoc))
             {
                 dgvMH.DataSource = mHModify.getAllMonHoc();
-                MessageBox.Show("Thêm thành công");
+                MessageBox.Show("Thêm thành công", "Thông báo");
 
             }
             else
@@ -89,6 +89,7 @@ namespace QlyDiem
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            tbTimKiemTheoMa.Text = "Nhập mã môn cần tìm";
             tbMaMon.Clear();
             tbTenMon.Clear();
             tbSoTC.Clear();
@@ -107,7 +108,7 @@ namespace QlyDiem
             string macdinh = "Nhập mã môn cần tìm";
             if (maMon == macdinh || maMon == "")
             {
-                MessageBox.Show("Vui lòng nhập mã môn");
+                MessageBox.Show("Vui lòng nhập mã môn", "Thông báo");
                 return;
             }
             try
@@ -139,7 +140,7 @@ namespace QlyDiem
             int soTinChi;
             if (maMon == "" || tenMon == "" || tbSoTC.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
                 return;
             }
             try
@@ -149,7 +150,7 @@ namespace QlyDiem
             }
             catch (FormatException)
             {
-                MessageBox.Show("Bạn phải nhập số nguyên");
+                MessageBox.Show("Bạn phải nhập số nguyên", "Thông báo");
                 return;
             }
             DataTable result = mHModify.search(maMon);
@@ -161,7 +162,7 @@ namespace QlyDiem
             }
             if (mHModify.update(MonHoc))
             {
-                MessageBox.Show("Sửa thành công.");
+                MessageBox.Show("Sửa thành công.", "Thông báo");
                 dgvMH.DataSource = mHModify.getAllMonHoc();
             }
             else
@@ -174,7 +175,7 @@ namespace QlyDiem
             string maMon = tbMaMon.Text;
             if (maMon == "")
             {
-                MessageBox.Show("Bạn chưa nhập mã môn!");
+                MessageBox.Show("Bạn chưa nhập mã môn!", "Thông báo");
                 return;
             }
             DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -192,7 +193,7 @@ namespace QlyDiem
             if (mHModify.delete(maMon))
             {
                 dgvMH.DataSource = mHModify.getAllMonHoc();
-                MessageBox.Show("Xóa thành công");
+                MessageBox.Show("Xóa thành công", "Thông báo");
                 btnRefresh_Click(sender, e);
             }
             else
