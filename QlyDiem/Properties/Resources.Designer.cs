@@ -83,6 +83,16 @@ namespace QlyDiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap education_12 {
+            get {
+                object obj = ResourceManager.GetObject("education-12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_name_26 {
             get {
                 object obj = ResourceManager.GetObject("icons8-name-26", resourceCulture);
@@ -106,6 +116,16 @@ namespace QlyDiem.Properties {
         internal static System.Drawing.Bitmap images__1_ {
             get {
                 object obj = ResourceManager.GetObject("images (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images_preview_rev_1 {
+            get {
+                object obj = ResourceManager.GetObject("images_preview_rev_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -188,6 +208,28 @@ namespace QlyDiem.Properties {
         internal static System.Drawing.Bitmap png_transparent_computer_icons_scoreboard_score_miscellaneous_text_sport {
             get {
                 object obj = ResourceManager.GetObject("png-transparent-computer-icons-scoreboard-score-miscellaneous-text-sport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_school_graduation_ceremony_computer_icons_higher_education_school_angle_logo_graduation_ceremony_thumbnail {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-school-graduation-ceremony-computer-icons-higher-education-school" +
+                        "-angle-logo-graduation-ceremony-thumbnail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_school_graduation_ceremony_computer_icons_higher_education_school_angle_logo_graduation_ceremony_thumbnail_preview_rev_1 {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-school-graduation-ceremony-computer-icons-higher-education-school" +
+                        "-angle-logo-graduation-ceremony-thumbnail_preview_rev_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

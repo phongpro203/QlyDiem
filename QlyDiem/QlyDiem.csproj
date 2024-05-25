@@ -213,5 +213,17 @@
   <ItemGroup>
     <None Include="Resources\ms-excel-icon-2048x2026-nws24wyy.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images_preview_rev_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-transparent-school-graduation-ceremony-computer-icons-higher-education-school-angle-logo-graduation-ceremony-thumbnail_preview_rev_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-transparent-school-graduation-ceremony-computer-icons-higher-education-school-angle-logo-graduation-ceremony-thumbnail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\education-12.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

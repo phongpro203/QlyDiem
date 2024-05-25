@@ -68,6 +68,7 @@
             // 
             // dgvThongKe
             // 
+            this.dgvThongKe.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvThongKe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvThongKe.Location = new System.Drawing.Point(21, 286);
             this.dgvThongKe.Name = "dgvThongKe";

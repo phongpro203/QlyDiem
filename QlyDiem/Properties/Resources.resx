@@ -118,8 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Lịch-7-tờ-6-scaled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lịch-7-tờ-6-scaled.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-name-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-name-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="png-transparent-computer-icons-scoreboard-score-miscellaneous-text-sport" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\png-transparent-computer-icons-scoreboard-score-miscellaneous-text-sport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images_preview_rev_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images_preview_rev_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Education,_Studying,_University,_Alumni_-_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Education,_Studying,_University,_Alumni_-_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,17 +139,14 @@
   <data name="1351410-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1351410-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngtree-teacher-vector-illustration-with-black-and-white-design-teacher-icon-png-image_1996068" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pngtree-teacher-vector-illustration-with-black-and-white-design-teacher-icon-png-image_1996068.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="images1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="kisspng-computer-icons-clip-art-portable-network-graphics-student-filled-svg-png-icon-free-download-43269-5c5a7c977a05f0.2330390715494340074998" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kisspng-computer-icons-clip-art-portable-network-graphics-student-filled-svg-png-icon-free-download-43269-5c5a7c977a05f0.2330390715494340074998.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="images1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-name-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-name-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngtree-teacher-vector-illustration-with-black-and-white-design-teacher-icon-png-image_1996068" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngtree-teacher-vector-illustration-with-black-and-white-design-teacher-icon-png-image_1996068.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="teacher-7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\teacher-7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,8 +154,8 @@
   <data name="pngtree-vector-lock-icon-png-image_1028350" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pngtree-vector-lock-icon-png-image_1028350.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngtree-black-padlock-png-image_3729324" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pngtree-black-padlock-png-image_3729324.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ms-excel-icon-2048x2026-nws24wyy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ms-excel-icon-2048x2026-nws24wyy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngtree-graduation-bachelor-hat-illustration-png-image_6580811" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pngtree-graduation-bachelor-hat-illustration-png-image_6580811.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,13 +169,19 @@
   <data name="png-clipart-computer-icons-student-academic-degree-graduation-ceremony-student-people-logo-thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\png-clipart-computer-icons-student-academic-degree-graduation-ceremony-student-people-logo-thumbnail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Lịch-7-tờ-6-scaled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Lịch-7-tờ-6-scaled.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngtree-black-padlock-png-image_3729324" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngtree-black-padlock-png-image_3729324.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ms-excel-icon-2048x2026-nws24wyy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ms-excel-icon-2048x2026-nws24wyy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="png-transparent-school-graduation-ceremony-computer-icons-higher-education-school-angle-logo-graduation-ceremony-thumbnail_preview_rev_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-transparent-school-graduation-ceremony-computer-icons-higher-education-school-angle-logo-graduation-ceremony-thumbnail_preview_rev_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="png-transparent-school-graduation-ceremony-computer-icons-higher-education-school-angle-logo-graduation-ceremony-thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-transparent-school-graduation-ceremony-computer-icons-higher-education-school-angle-logo-graduation-ceremony-thumbnail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="education-12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\education-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
