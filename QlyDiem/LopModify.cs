@@ -45,7 +45,7 @@ namespace QlyDiem
             {
                 if (ex.Number == 2601 || ex.Number == 2627) // Mã lỗi cho "Nhập trùng khóa"
                 {
-                    MessageBox.Show("Mã lớp đã tồn tại trong cơ sở dữ liệu.");
+                    MessageBox.Show("Mã lớp đã tồn tại trong cơ sở dữ liệu.", "Thông báo");
                     return false;
                 }
             }
