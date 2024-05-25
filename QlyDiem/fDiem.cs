@@ -49,7 +49,7 @@ namespace QlyDiem
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Lỗi");
             }
-            
+
         }
 
         private void tbMaSV_TextChanged(object sender, EventArgs e)
@@ -64,27 +64,27 @@ namespace QlyDiem
             string query = "select TenSV from SinhVien where MaSV = @MaSV";
             SqlConnection con = Connection.getSqlConnection();
             SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@MaSV", studentId);
+            command.Parameters.AddWithValue("@MaSV", studentId);
 
-                try
+            try
+            {
+                con.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    con.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        tbHoTen.Text = reader["TenSV"].ToString();
-                    }
-                    else
-                    {
-                        tbHoTen.Text = "Không tìm thấy";
-                    }
-                    reader.Close();
+                    tbHoTen.Text = reader["TenSV"].ToString();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    tbHoTen.Text = "Không tìm thấy";
                 }
-            
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
         }
 
         private void tbMaMon_TextChanged(object sender, EventArgs e)
@@ -376,7 +376,6 @@ namespace QlyDiem
                 MessageBox.Show("Môn học không tồn tại", "Lỗi");
                 return;
             }
-
             try
             {
                 Diem diem = new Diem(maSV, maMon, hocKy, diemThi, diemTK);

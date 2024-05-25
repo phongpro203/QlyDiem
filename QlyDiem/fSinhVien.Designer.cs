@@ -279,6 +279,7 @@
             // 
             // cbbLop
             // 
+            this.cbbLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbLop.FormattingEnabled = true;
             this.cbbLop.Location = new System.Drawing.Point(557, 70);

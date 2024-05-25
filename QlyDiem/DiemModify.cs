@@ -124,7 +124,7 @@ namespace QlyDiem
         public bool update(Diem diem)
         {
             connection = Connection.getSqlConnection();
-            string sql = "update BangDiem set MaSV = @MaSV, MaMon = @MaMon, HocKy = @HocKy, DiemThi = @DiemThi, DiemThuongXuyen = @DiemThuongXuyen where MaSV = @MaSV";
+            string sql = "update BangDiem set HocKy = @HocKy, DiemThi = @DiemThi, DiemThuongXuyen = @DiemThuongXuyen where MaSV = @MaSV and MaMon = @MaMon";
             try
             {
                 connection.Open();
