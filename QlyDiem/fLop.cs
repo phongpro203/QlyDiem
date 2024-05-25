@@ -64,8 +64,10 @@ namespace QlyDiem
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            tbTimKiemTheoTen.Text = "Nhập mã lớp";
             tbMaLop.Clear();
             tbTenLop.Clear();
+            tbMaLop.Focus();
             tbMaLop.Focus();
         }
 
@@ -78,7 +80,7 @@ namespace QlyDiem
             string maKhoa = null;
             if (maLop == "" || tenLop == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
                 return;
             }
             DataTable result = lopModify.search(maLop);
@@ -107,7 +109,7 @@ namespace QlyDiem
             lop = new Lop(maLop, tenLop, maKhoa);
             if (lopModify.update(lop))
             {
-                MessageBox.Show("Sửa thành công.");
+                MessageBox.Show("Sửa thành công.", "Thông báo");
 
                 // sửa thành công, cập nhật DataGridView
                 dgvLop.DataSource = lopModify.getAllopHoc();
@@ -127,7 +129,7 @@ namespace QlyDiem
             string maKhoa = null;
             if (maLop == "" || tenLop == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
                 return;
             }
             using (SqlConnection con = Connection.getSqlConnection())
@@ -151,7 +153,7 @@ namespace QlyDiem
             {
                 // thêm thành công, cập nhật DataGridView
                 dgvLop.DataSource = lopModify.getAllopHoc();
-                MessageBox.Show("Thêm thành công");
+                MessageBox.Show("Thêm thành công", "Thông báo");
 
             }
             else
@@ -165,7 +167,7 @@ namespace QlyDiem
             string ml = tbMaLop.Text;
             if (ml == "")
             {
-                MessageBox.Show("Bạn chưa nhập mã lớp!");
+                MessageBox.Show("Bạn chưa nhập mã lớp!", "Thông báo");
                 return;
             }
             DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -183,7 +185,7 @@ namespace QlyDiem
             if (lopModify.delete(ml))
             {
                 dgvLop.DataSource = lopModify.getAllopHoc();
-                MessageBox.Show("Xóa thành công");
+                MessageBox.Show("Xóa thành công", "Thông báo");
                 btnRefresh_Click(sender, e);
             }
             else
@@ -275,7 +277,7 @@ namespace QlyDiem
             string macdinh = "Nhập mã lớp";
             if (tenLop == macdinh || tenLop == "")
             {
-                MessageBox.Show("Vui lòng nhập mã lớp");
+                MessageBox.Show("Vui lòng nhập mã lớp", "Thông báo");
                 return;
             }
             try

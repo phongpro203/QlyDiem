@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QlyDiem
 {
@@ -53,6 +54,14 @@ namespace QlyDiem
                 sqlCommand.Parameters.Add("@DiemThuongXuyen", SqlDbType.Float).Value = diem.DiemTX;
                 sqlCommand.ExecuteNonQuery();//thuc thi lenh truy van
 
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2601 || ex.Number == 2627) // Mã lỗi cho "Nhập trùng khóa"
+                {
+                    MessageBox.Show("Thông tin đã tồn tại trong cơ sở dữ liệu.");
+                    return false;
+                }
             }
             catch
             {

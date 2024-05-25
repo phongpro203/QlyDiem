@@ -84,7 +84,7 @@ namespace QlyDiem
                 string msv = tbTimKiemTheoMa.Text;
                 if(msv == macdinh || msv == "")
                 {
-                    MessageBox.Show("Vui lòng nhập mã sinh viên");
+                    MessageBox.Show("Vui lòng nhập mã sinh viên", "Thông báo");
                     return;
                 }
                 //Kiem tra xem du lieu nhap vao co hay ko
@@ -96,7 +96,7 @@ namespace QlyDiem
 
                     if (count == 0)
                     {
-                        MessageBox.Show("Không tìm thấy mã sinh viên trong cơ sở dữ liệu");
+                        MessageBox.Show("Không tìm thấy mã sinh viên trong cơ sở dữ liệu", "Thông báo");
                         return;
                     }
                 }
@@ -163,7 +163,7 @@ namespace QlyDiem
                         }
                         else
                         {
-                            MessageBox.Show("Không tìm thấy dữ liệu!");
+                            MessageBox.Show("Không tìm thấy dữ liệu!", "Thông báo");
                         }
 
                         if (soTC != DBNull.Value)
@@ -173,7 +173,7 @@ namespace QlyDiem
                         }
                         else
                         {
-                            MessageBox.Show("Không tìm thấy dữ liệu!");
+                            MessageBox.Show("Không tìm thấy dữ liệu!", "Thông báo");
                         }
                         sqlCommand.Dispose();
                     }
@@ -303,7 +303,7 @@ namespace QlyDiem
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 oBook.SaveAs(saveFileDialog.FileName);
-                MessageBox.Show("Dữ liệu đã được xuất thành công vào tập tin Excel.");
+                MessageBox.Show("Dữ liệu đã được xuất thành công vào tập tin Excel.", "Thông báo");
             }
 
             // Đóng Workbook và ứng dụng Excel
@@ -334,7 +334,7 @@ namespace QlyDiem
                     dgvThongKe.DataSource = dt;
                     if (dt.Rows.Count == 0)
                     {
-                        MessageBox.Show("Không tìm thấy dữ liệu để xuất!");
+                        MessageBox.Show("Không tìm thấy dữ liệu để xuất!", "Thông báo");
                         return;
                     }
                     // Gọi hàm ExportFile để xuất dữ liệu ra Excel

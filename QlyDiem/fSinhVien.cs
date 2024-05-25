@@ -29,7 +29,7 @@ namespace QlyDiem
                 System.Threading.Thread.Sleep(2000); // Giả lập tải dữ liệu
             });
         }
-        private void fSinhVien_Load(object sender, EventArgs e)                                     //load 
+        private void fSinhVien_Load(object sender, EventArgs e)                                    
         {
             dgvSV.ReadOnly = true;
             sVModify = new SVModify();
@@ -67,42 +67,13 @@ namespace QlyDiem
             }
             
         }
-        private bool KiemTraLoiNhapLieu()                                                       //Kiểm tra nhập liệu
-        {
-            if (string.IsNullOrWhiteSpace(tbHoTen.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Tên Sinh Viên", "Lỗi");
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(cbbLop.Text))
-            {
-                MessageBox.Show("Vui lòng chọn Lớp", "Lỗi");
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(tbQueQuan.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Quê Quán", "Lỗi");
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(tbNgaysinh.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Ngày Sinh", "Lỗi");
-                return true;
-            }
-            if (!rdoNam.Checked && !rdoNu.Checked)
-            {
-                MessageBox.Show("Vui lòng chọn Giới Tính", "Lỗi");
-                return true;
-            }
-            return false;
-        }
+        
         private void btnTimKiem_Click(object sender, EventArgs e)                              //Nút tìm kiếm
         {
             string maSV = tbTimKiemTheoMa.Text;
-
-            if (string.IsNullOrWhiteSpace(maSV))
+            if (maSV == "Nhập mã sinh viên" || maSV == "")
             {
-                MessageBox.Show("Vui lòng nhập Mã Sinh Viên để tìm kiếm", "Thông báo");
+                MessageBox.Show("Vui lòng nhập mã sinh viên", "Thông báo");
                 return;
             }
             try
@@ -131,31 +102,28 @@ namespace QlyDiem
             }
         }
 
-        private void btnThem_Click(object sender, EventArgs e)                                  //Nút thêm 
+        private void btnThem_Click(object sender, EventArgs e)                                  //Nút thêm
         {
             string maSV = tbMaSV.Text;
             string tenSV = tbHoTen.Text;
             string tenLop = cbbLop.Text;
             string queQuan = tbQueQuan.Text;
+            string ngaySinh = tbNgaysinh.Text;
+            string gioiTinh = rdoNam.Checked ? "Nam" : rdoNu.Checked ? "Nữ" : null;
+
+            // check nhập liệu
+            if (string.IsNullOrWhiteSpace(maSV) || string.IsNullOrWhiteSpace(tenSV) ||
+                string.IsNullOrWhiteSpace(tenLop) || string.IsNullOrWhiteSpace(queQuan) ||
+                string.IsNullOrWhiteSpace(ngaySinh) || gioiTinh == null)
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo");
+                return;
+            }
+
             string sql = "select MaLop from Lop where TenLop = @tenLop";
             SqlConnection con = null;
             SqlCommand cmd = null;
-            if (string.IsNullOrWhiteSpace(maSV))
-            {
-                MessageBox.Show("Vui lòng nhập Mã Sinh Viên để Thêm ", "Thông báo");
-                return;
-            }
-            DataTable result = sVModify.search(maSV);
 
-            if (result.Rows.Count != 0)
-            {
-                MessageBox.Show("Mã sinh viên đã tồn tại ", "Thông báo");
-                return;
-            }
-            else if (KiemTraLoiNhapLieu())
-            {
-                return;
-            }
             try
             {
                 con = Connection.getSqlConnection();
@@ -164,16 +132,13 @@ namespace QlyDiem
                 cmd.Parameters.AddWithValue("@tenLop", tenLop);
                 object oj = cmd.ExecuteScalar();
                 string maLop = oj?.ToString(); // Sử dụng toán tử null-conditional để tránh lỗi NullReferenceException
-                string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
-                string ngaySinh = tbNgaysinh.Text;
 
                 SinhVien sinhVien = new SinhVien(maSV, tenSV, queQuan, tenLop, maLop, ngaySinh, gioiTinh);
                 if (sVModify.insertSV(sinhVien))
                 {
                     // Thêm thành công, cập nhật DataGridView
                     dgvSV.DataSource = sVModify.getAllSinhvien();
-                    MessageBox.Show("Thêm thành công");
-
+                    MessageBox.Show("Thêm thành công", "Thông báo");
                 }
                 else
                 {
@@ -188,32 +153,45 @@ namespace QlyDiem
             {
                 con?.Close();
                 cmd?.Dispose();
-            }
-            btnRefresh_Click(sender, e);
+            }     
         }
 
-        
+
+
         private void btnSua_Click(object sender, EventArgs e)                                   //Nút sửa
         {
-
             string maSV = tbMaSV.Text;
             string tenSV = tbHoTen.Text;
             string tenLop = cbbLop.Text;
             string queQuan = tbQueQuan.Text;
-            string sql = "select MaLop from Lop where TenLop = '" + tenLop + "'";
+            string ngaySinh = tbNgaysinh.Text;
+            string gioiTinh = rdoNam.Checked ? "Nam" : rdoNu.Checked ? "Nữ" : null;
+
+            // check nhập liệu
+            if (string.IsNullOrWhiteSpace(maSV) || string.IsNullOrWhiteSpace(tenSV) ||
+                string.IsNullOrWhiteSpace(tenLop) || string.IsNullOrWhiteSpace(queQuan) ||
+                string.IsNullOrWhiteSpace(ngaySinh) || gioiTinh == null)
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo");
+                return;
+            }
+
+            string sql = "select MaLop from Lop where TenLop = @tenLop";
             SqlConnection con = Connection.getSqlConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@tenLop", tenLop);
             object oj = cmd.ExecuteScalar();
             string maLop = oj?.ToString(); // Sử dụng toán tử null-conditional để tránh lỗi NullReferenceException
-            string gioiTinh = rdoNam.Checked ? "Nam" : "Nữ";
-            string ngaySinh = tbNgaysinh.Text;
+
             sinhVien = new SinhVien(maSV, tenSV, queQuan, tenLop, maLop, ngaySinh, gioiTinh);
+
             if (string.IsNullOrWhiteSpace(maSV))
             {
                 MessageBox.Show("Vui lòng nhập Mã Sinh Viên để sửa ", "Thông báo");
                 return;
             }
+
             try
             {
                 DataTable result = sVModify.search(maSV);
@@ -222,13 +200,10 @@ namespace QlyDiem
                 {
                     MessageBox.Show("Không tìm thấy dữ liệu để sửa ", "Thông báo");
                     return;
-                }else if (KiemTraLoiNhapLieu())
-                {
-                    return;
                 }
                 else if (sVModify.update(sinhVien))
                 {
-                    MessageBox.Show("Sửa thành công.");
+                    MessageBox.Show("Sửa thành công.", "Thông báo");
                     // sửa thành công, cập nhật DataGridView
                     dgvSV.DataSource = sVModify.getAllSinhvien();
                 }
@@ -241,21 +216,20 @@ namespace QlyDiem
             {
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi");
             }
-            btnRefresh_Click(sender, e);
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)                                   //Nút xóa
         {
-            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (tl == DialogResult.Cancel || tl == DialogResult.No)
-            {
-                return;
-            }
             string maSV = tbMaSV.Text;
-
             if (string.IsNullOrWhiteSpace(maSV))
             {
                 MessageBox.Show("Vui lòng nhập Mã Sinh Viên để xóa ", "Thông báo");
+                return;
+            }
+            DialogResult tl = MessageBox.Show("Bạn có muốn xóa dữ liệu không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tl == DialogResult.Cancel || tl == DialogResult.No)
+            {
                 return;
             }
             try
@@ -269,8 +243,7 @@ namespace QlyDiem
                 }else if (sVModify.delete(maSV))
                 {
                     dgvSV.DataSource = sVModify.getAllSinhvien();
-                    MessageBox.Show("Xóa thành công");
-                    btnRefresh_Click(sender, e);
+                    MessageBox.Show("Xóa thành công", "Thông báo");
                 }
                 else
                 {
@@ -285,9 +258,11 @@ namespace QlyDiem
         }
         private void btnRefresh_Click(object sender, EventArgs e)                               //Nút làm mới
         {
+            tbTimKiemTheoMa.Text = "Nhập mã sinh viên";
             tbMaSV.Clear();
             tbHoTen.Clear();
             tbQueQuan.Clear();
+            tbMaSV.Focus();
         }
 
         private void btnTatCa_Click(object sender, EventArgs e)                                 //Nút tất cả
@@ -340,7 +315,7 @@ namespace QlyDiem
             tbTimKiemTheoMa.Clear();
         }
 
-        private void dgvSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvSV_CellContentClick(object sender, DataGridViewCellEventArgs e)                 //cell click
         {
             DataGridViewRow row = new DataGridViewRow();
             row = dgvSV.Rows[e.RowIndex];
@@ -360,7 +335,6 @@ namespace QlyDiem
                 rdoNu.Checked = true;
             }
         }
-
         private void fSinhVien_Activated_1(object sender, EventArgs e)
         {
             fSinhVien_Load(sender, e);

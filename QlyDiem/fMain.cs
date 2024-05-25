@@ -208,5 +208,10 @@ namespace QlyDiem
         {
             lbMH_Click(sender, e);
         }
+
+        private void DXtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
