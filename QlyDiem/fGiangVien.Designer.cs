@@ -150,7 +150,7 @@
             // tbTrinhDo
             // 
             this.tbTrinhDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTrinhDo.Location = new System.Drawing.Point(520, 72);
+            this.tbTrinhDo.Location = new System.Drawing.Point(531, 72);
             this.tbTrinhDo.Margin = new System.Windows.Forms.Padding(4);
             this.tbTrinhDo.Name = "tbTrinhDo";
             this.tbTrinhDo.Size = new System.Drawing.Size(245, 26);
@@ -302,9 +302,10 @@
             // 
             // cbbMaKhoa
             // 
+            this.cbbMaKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMaKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbMaKhoa.FormattingEnabled = true;
-            this.cbbMaKhoa.Location = new System.Drawing.Point(520, 126);
+            this.cbbMaKhoa.Location = new System.Drawing.Point(531, 126);
             this.cbbMaKhoa.Margin = new System.Windows.Forms.Padding(4);
             this.cbbMaKhoa.Name = "cbbMaKhoa";
             this.cbbMaKhoa.Size = new System.Drawing.Size(208, 28);

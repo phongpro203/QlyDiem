@@ -179,6 +179,7 @@
             // 
             // cbbHK
             // 
+            this.cbbHK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbHK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbHK.FormattingEnabled = true;
             this.cbbHK.Items.AddRange(new object[] {
@@ -238,12 +239,13 @@
             // 
             // tbTenMon
             // 
+            this.tbTenMon.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tbTenMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTenMon.Location = new System.Drawing.Point(585, 59);
+            this.tbTenMon.Location = new System.Drawing.Point(586, 59);
             this.tbTenMon.Margin = new System.Windows.Forms.Padding(4);
             this.tbTenMon.Name = "tbTenMon";
             this.tbTenMon.ReadOnly = true;
-            this.tbTenMon.Size = new System.Drawing.Size(264, 26);
+            this.tbTenMon.Size = new System.Drawing.Size(263, 26);
             this.tbTenMon.TabIndex = 37;
             // 
             // label2
@@ -280,6 +282,7 @@
             // 
             // tbHoTen
             // 
+            this.tbHoTen.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tbHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbHoTen.Location = new System.Drawing.Point(586, 23);
             this.tbHoTen.Margin = new System.Windows.Forms.Padding(4);

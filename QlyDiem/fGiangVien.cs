@@ -254,6 +254,13 @@ namespace QlyDiem
                 return;
             }
             string gv = tbMaGV.Text;
+            DataTable result = gVModify.searchGV(gv);
+
+            if (result.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để xóa", "Thông báo");
+                return;
+            }
             if (gVModify.deleteGV(gv))
             {
                 dgvSV.DataSource = gVModify.getAllGiangVien();

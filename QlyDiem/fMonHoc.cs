@@ -182,6 +182,13 @@ namespace QlyDiem
             {
                 return;
             }
+            DataTable result = mHModify.search(maMon);
+
+            if (result.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để xóa", "Thông báo");
+                return;
+            }
             if (mHModify.delete(maMon))
             {
                 dgvMH.DataSource = mHModify.getAllMonHoc();

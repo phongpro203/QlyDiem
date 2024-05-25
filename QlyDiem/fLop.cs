@@ -173,7 +173,13 @@ namespace QlyDiem
             {
                 return;
             }
-            
+            DataTable result = lopModify.search(ml);
+
+            if (result.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để xóa", "Thông báo");
+                return;
+            }
             if (lopModify.delete(ml))
             {
                 dgvLop.DataSource = lopModify.getAllopHoc();
