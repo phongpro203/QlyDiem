@@ -331,12 +331,13 @@ namespace QlyDiem
                 {
                     DataTable dt = new DataTable();
                     sqlDataAdapter.Fill(dt); // Điền dữ liệu vào DataTable
-                    dgvThongKe.DataSource = dt;
+                    
                     if (dt.Rows.Count == 0)
                     {
-                        MessageBox.Show("Không tìm thấy dữ liệu để xuất!", "Thông báo");
+                        MessageBox.Show("Bạn cần nhập dữ liệu sinh viên cần xuất trước!", "Thông báo");
                         return;
                     }
+                    dgvThongKe.DataSource = dt;
                     // Gọi hàm ExportFile để xuất dữ liệu ra Excel
                     ExportFile(dt, "Sheet1", "Báo cáo điểm sinh viên",msv,con);
                     con.Close();

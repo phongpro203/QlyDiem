@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -212,6 +213,19 @@ namespace QlyDiem
         private void DXtoolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void hướngDẫnSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string filePath = "https://uneti.edu.vn/";
+            try
+            {
+                Process.Start(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not open file: " + ex.Message);
+            }
         }
     }
 }
