@@ -88,7 +88,7 @@ namespace QlyDiem
             DataTable dt = new DataTable();
             connection = Connection.getSqlConnection();
             connection.Open();
-            string sql = "select * from Lop where Malop = '" + Malop + "'";
+            string sql = "Select Lop.MaLop, Lop.TenLop, Khoa.TenKhoa from Lop, Khoa where Lop.MaKhoa = Khoa.MaKhoa and Malop = '" + Malop + "'";
             da = new SqlDataAdapter(sql, connection);
             da.Fill(dt);
             connection.Close();

@@ -107,7 +107,10 @@ namespace QlyDiem
             DataTable dt = new DataTable();
             connection = Connection.getSqlConnection();
             connection.Open();
-            string sql = "select * from GiangVien where MaGV = '" + MaGV + "'";
+            string sql = "SELECT GiangVien.MaGV, GiangVien.TenGV, Khoa.TenKhoa, GiangVien.NgaySinh, GiangVien.QueQuan, GiangVien.GioiTinh, GiangVien.TrinhDo " +
+              "FROM GiangVien, Khoa " +
+              "WHERE GiangVien.MaKhoa = Khoa.MaKhoa AND GiangVien.MaGV = '" + MaGV + "'";
+
             da = new SqlDataAdapter(sql, connection);
             da.Fill(dt);
             connection.Close();
