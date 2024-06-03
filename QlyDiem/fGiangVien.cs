@@ -18,7 +18,6 @@ namespace QlyDiem
         {
             InitializeComponent();
         }
-        DataTable dataTable;
         public async Task LoadDataAsync()
         {
             await Task.Run(() =>
@@ -36,7 +35,7 @@ namespace QlyDiem
             con.Open();
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
-            dataTable = new DataTable();
+            DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
             if (dataTable.Rows.Count > 0)
             {
@@ -338,11 +337,6 @@ namespace QlyDiem
         private void tbTimKiemTheoMa_Click(object sender, EventArgs e)
         {
             tbTimKiemTheoMa.Clear();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.BindingContext[dataTable].Position += 1;
         }
     }
 }

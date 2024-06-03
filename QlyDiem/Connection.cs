@@ -4,13 +4,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace QlyDiem
 {
     internal class Connection
     {
-        private static string sqlcoconnectstring = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Application.StartupPath}\QlyDiem.mdf;Integrated Security=True;Connect Timeout=30";
+        private static string sqlcoconnectstring = "Data Source=(local);Initial Catalog=QlyDiem;Integrated Security=True";
         public static SqlConnection getSqlConnection()
         {
             return new SqlConnection(sqlcoconnectstring);
